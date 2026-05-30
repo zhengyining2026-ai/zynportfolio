@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>郑奕宁 · 产品&amp;运营作品集</title>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#080c14;
+      --bg-alt:#0d1119;
+      --bg-card:#111827;
+      --bg-card-hover:#182032;
+      --text:#e4e8f0;
+      --text-secondary:#8b95a8;
+      --text-light:#5c6678;
+      --primary:#1a3360;
+      --accent:#4d8af0;
+      --accent-light:#7aabf8;
+      --accent-pale:rgba(77,138,240,0.1);
+      --accent-glow:rgba(77,138,240,0.06);
+      --border:rgba(255,255,255,0.06);
+      --border-hover:rgba(255,255,255,0.1);
+      --radius:12px;
+      --radius-sm:8px;
+      --transition:0.3s cubic-bezier(.4,0,.2,1);
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+      color:var(--text);background:var(--bg);line-height:1.75;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* ========== Navbar ========== */
+    .nav{
+      position:sticky;top:0;z-index:100;
+      background:rgba(8,12,20,0.88);
+      backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+      border-bottom:1px solid var(--border);
+      padding:0 2rem;
+    }
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-logo{font-size:1.25rem;font-weight:700;color:var(--accent-light);letter-spacing:0.5px}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{font-size:0.85rem;font-weight:500;color:var(--text-secondary);padding:6px 0;border-bottom:2px solid transparent;transition:var(--transition)}
+    .nav-links a:hover,.nav-links a.active{color:var(--accent-light);border-color:var(--accent)}
+
+    /* ========== Hero ========== */
+    .hero{
+      padding:6rem 2rem 5rem;text-align:center;
+      position:relative;overflow:hidden;
+      background:linear-gradient(180deg,var(--bg) 0%,var(--primary) 100%);
+    }
+    .hero::after{
+      content:'';position:absolute;inset:0;
+      background:url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=1400&q=80') center/cover no-repeat;
+      opacity:0.35;
+    }
+    .hero > *{max-width:760px;margin-left:auto;margin-right:auto}
+    /* Stars */
+    .stars{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+    .star{
+      position:absolute;border-radius:50%;background:#fff;
+      animation:twinkle var(--dur) ease-in-out infinite;
+      animation-delay:var(--delay);opacity:0;
+    }
+    @keyframes twinkle{0%,100%{opacity:0.2;transform:scale(1)}50%{opacity:0.85;transform:scale(1.3)}}
+    .hero > *{position:relative;z-index:1}
+    /* Override for stars - keep full width */
+    .hero > .stars{max-width:none;margin:0;z-index:0}
+    .hero > *:not(.stars){z-index:2}
+    .hero-eyebrow{font-size:0.75rem;text-transform:uppercase;letter-spacing:4px;color:var(--accent);font-weight:600;margin-bottom:1.25rem}
+    .hero h1{font-size:3rem;font-weight:800;color:#fff;line-height:1.2;letter-spacing:-0.5px}
+    .hero h1 span{color:var(--accent-light)}
+    .hero-subtitle{font-size:1.05rem;color:var(--text-secondary);margin-top:1.25rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8}
+    .hero-lines{margin-top:2.5rem;display:flex;flex-direction:column;align-items:center;gap:0.55rem}
+    .hero-lines .hl{
+      font-size:0.92rem;color:var(--text-secondary);padding:8px 22px;
+      background:var(--bg-card);border-radius:22px;border:1px solid var(--border);
+      transition:var(--transition);
+    }
+    .hero-lines .hl:hover{border-color:var(--border-hover);color:var(--text)}
+    .hero-lines .hl em{color:var(--accent-light);font-style:normal;font-weight:600}
+    .hero-tagline{
+      margin-top:1.25rem;font-size:1rem;color:var(--accent-light);font-weight:600;
+      letter-spacing:1px;
+    }
+    .hero-persona{margin-top:1.25rem;font-size:1.05rem;color:var(--text);font-weight:500;letter-spacing:0.5px}
+    .hero-cta{display:inline-block;margin-top:2.8rem;padding:14px 36px;border-radius:28px;font-size:0.9rem;font-weight:600;background:var(--accent);color:#fff;transition:var(--transition);cursor:pointer;border:none;letter-spacing:0.5px}
+    .hero-cta:hover{background:#5d9af7;transform:translateY(-2px);box-shadow:0 12px 30px rgba(77,138,240,0.3)}
+
+    /* ========== Sections ========== */
+    .section{padding:5rem 2rem;max-width:1000px;margin:0 auto}
+    .section-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:4px;color:var(--accent);font-weight:600;margin-bottom:0.5rem;text-align:center}
+    .section-title{font-size:1.85rem;font-weight:800;color:#fff;text-align:center;margin-bottom:0.75rem}
+    .section-desc{font-size:0.88rem;color:var(--text-secondary);text-align:center;margin-bottom:2.5rem;max-width:580px;margin-left:auto;margin-right:auto;line-height:1.7}
+
+    /* ========== Education – Timeline ========== */
+    .edu-timeline{position:relative;max-width:700px;margin:0 auto;padding:0 0 0 2rem}
+    .edu-timeline::before{
+      content:'';position:absolute;left:16px;top:0;bottom:0;
+      width:2px;background:linear-gradient(180deg,var(--accent),rgba(77,138,240,0.2));
+    }
+    .edu-node{position:relative;margin-bottom:2.5rem}
+    .edu-node:last-child{margin-bottom:0}
+    .edu-dot{
+      position:absolute;left:-2rem;top:4px;width:34px;height:34px;
+      border-radius:50%;background:var(--bg);
+      border:2px solid var(--accent);z-index:2;
+      display:flex;align-items:center;justify-content:center;
+      font-size:0.65rem;font-weight:800;color:var(--accent-light);
+    }
+    .edu-node.current .edu-dot{background:var(--accent);color:#fff;box-shadow:0 0 16px rgba(77,138,240,0.4)}
+    .edu-card{
+      background:var(--bg-card);border:1px solid var(--border);
+      border-radius:var(--radius);padding:1.5rem 1.75rem;
+      transition:var(--transition);cursor:pointer;
+    }
+    .edu-card:hover{background:var(--bg-card-hover);border-color:var(--border-hover)}
+    .edu-card-top{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:0.4rem}
+    .edu-card h4{font-size:1.05rem;font-weight:700;color:#fff}
+    .edu-card .edu-degree{font-size:0.8rem;color:var(--accent-light);font-weight:600}
+    .edu-card .edu-school{font-size:0.85rem;color:var(--text-secondary);margin-top:2px}
+    .edu-card .edu-date{font-size:0.78rem;color:var(--text-light);margin-top:2px}
+    .edu-card-body{max-height:0;overflow:hidden;transition:max-height 0.45s ease,margin-top 0.3s;margin-top:0}
+    .edu-card.open .edu-card-body{max-height:300px;margin-top:1rem}
+    .edu-card-body-inner{font-size:0.84rem;color:var(--text-secondary);line-height:1.9;padding-top:0.75rem;border-top:1px solid var(--border)}
+    .edu-card-arrow{font-size:0.65rem;color:var(--text-light);transition:var(--transition);flex-shrink:0}
+    .edu-card.open .edu-card-arrow{transform:rotate(180deg);color:var(--accent-light)}
+    .edu-path-label{
+      position:absolute;left:-2.5rem;top:40px;
+      writing-mode:vertical-rl;font-size:0.6rem;color:var(--text-light);
+      text-transform:uppercase;letter-spacing:2px;opacity:0.5;
+    }
+
+    /* ========== Experience Cards ========== */
+    .exp-list{display:flex;flex-direction:column;gap:1.25rem}
+    .exp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+    .exp-card:hover{border-color:var(--border-hover)}
+    .exp-header{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 1.75rem;cursor:pointer;user-select:none;flex-wrap:wrap;gap:0.75rem}
+    .exp-header-left{flex:1;min-width:200px}
+    .exp-company{font-size:1.08rem;font-weight:700;color:#fff}
+    .exp-role{font-size:0.85rem;color:var(--accent-light);font-weight:500;margin-top:3px}
+    .exp-date{font-size:0.78rem;color:var(--text-light);margin-top:3px}
+    .exp-toggle{display:flex;align-items:center;gap:0.5rem;padding:8px 16px;border-radius:20px;border:1px solid var(--border);font-size:0.8rem;color:var(--text-secondary);background:transparent;cursor:pointer;transition:var(--transition);flex-shrink:0;white-space:nowrap}
+    .exp-toggle .arrow{transition:var(--transition);font-size:0.7rem}
+    .exp-card.open .exp-toggle{background:var(--accent);border-color:var(--accent);color:#fff}
+    .exp-card.open .exp-toggle .arrow{transform:rotate(180deg)}
+    .exp-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease,padding 0.3s ease}
+    .exp-card.open .exp-body{max-height:1400px}
+    .exp-body-inner{padding:0 1.75rem 1.75rem;border-top:1px solid var(--border)}
+    .exp-body-inner h4{font-size:0.85rem;color:var(--accent-light);font-weight:600;margin:1.25rem 0 0.5rem}
+    .exp-body-inner ul{list-style:none;padding:0}
+    .exp-body-inner li{position:relative;padding-left:1.25rem;font-size:0.85rem;color:var(--text-secondary);line-height:1.85}
+    .exp-body-inner li::before{content:'';position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:var(--accent)}
+    .exp-metrics{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:0.75rem}
+    .exp-metric{padding:4px 12px;border-radius:14px;font-size:0.75rem;font-weight:600;background:var(--accent-pale);color:var(--accent-light)}
+
+    /* ========== Projects ========== */
+    .proj-subtitle-sm{font-size:0.88rem;color:var(--accent-light);font-weight:700;text-align:center;margin-bottom:1rem}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;margin-bottom:2.5rem}
+    .project-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)}
+    .project-card:hover{background:var(--bg-card-hover);border-color:var(--border-hover);transform:translateY(-2px)}
+    .project-card h4{font-size:0.95rem;font-weight:700;color:#fff}
+    .project-card .proj-subtitle{font-size:0.78rem;color:var(--accent-light);font-weight:500;margin-top:4px}
+    .project-card p{font-size:0.82rem;color:var(--text-secondary);margin-top:0.6rem;line-height:1.7}
+
+    /* ========== Research Cards ========== */
+    .research-list{display:flex;flex-direction:column;gap:1rem}
+    .research-card{padding:1.5rem 1.75rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);border-left:3px solid var(--accent);transition:var(--transition)}
+    .research-card:hover{background:var(--bg-card-hover);border-left-color:var(--accent-light)}
+    .research-card .r-level{font-size:0.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--accent);font-weight:700;margin-bottom:0.5rem}
+    .research-card h4{font-size:0.95rem;font-weight:700;color:#fff;margin-bottom:0.25rem}
+    .research-card .r-date{font-size:0.78rem;color:var(--text-light);margin-bottom:0.6rem}
+    .research-card ul{list-style:none;padding:0}
+    .research-card li{position:relative;padding-left:1rem;font-size:0.83rem;color:var(--text-secondary);line-height:1.8}
+    .research-card li::before{content:'·';position:absolute;left:0;color:var(--accent);font-weight:bold}
+
+    /* ========== Competition – Grouped ========== */
+    .comp-group{margin-bottom:2rem}
+    .comp-group:last-child{margin-bottom:0}
+    .comp-group-title{font-size:0.85rem;font-weight:700;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+    .comp-group-badge{font-size:0.65rem;padding:3px 8px;border-radius:6px;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+    .comp-group-badge.nat{background:rgba(245,158,11,0.15);color:#f59e0b}
+    .comp-group-badge.prov{background:rgba(77,138,240,0.15);color:var(--accent-light)}
+    .comp-group-badge.sch{background:rgba(255,255,255,0.06);color:var(--text-secondary)}
+    .comp-group-items{display:flex;flex-direction:column;gap:0.35rem}
+    .comp-row{display:flex;align-items:baseline;gap:0.75rem;padding:0.5rem 0.85rem;border-radius:6px;transition:var(--transition);font-size:0.84rem;flex-wrap:wrap}
+    .comp-row:hover{background:rgba(255,255,255,0.02)}
+    .comp-row .bul{color:var(--accent);font-weight:700;flex-shrink:0;font-size:0.7rem}
+    .comp-row .name{color:var(--text);flex:1;min-width:0}
+    .comp-row .rank{color:var(--text-light);font-size:0.75rem;white-space:nowrap;flex-shrink:0}
+    .comp-row .date{color:var(--text-light);font-size:0.73rem;white-space:nowrap;flex-shrink:0;min-width:50px;text-align:right}
+
+    /* ========== Practice ========== */
+    .practice-list{display:flex;flex-direction:column;gap:0.6rem}
+    .practice-row{display:flex;align-items:center;gap:1rem;padding:0.75rem 1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);font-size:0.84rem;transition:var(--transition);flex-wrap:wrap}
+    .practice-row:hover{background:var(--bg-card-hover);border-color:var(--border-hover)}
+    .practice-role{color:#fff;font-weight:600;white-space:nowrap;flex-shrink:0;min-width:100px}
+    .practice-org{color:var(--text-secondary);flex:1;min-width:0}
+    .practice-date{color:var(--text-light);font-size:0.78rem;white-space:nowrap;flex-shrink:0}
+
+    /* ========== Awards ========== */
+    .award-blocks{display:flex;flex-direction:column;gap:1.5rem}
+    .award-block{}
+    .award-block h3{font-size:0.85rem;font-weight:700;color:var(--accent-light);margin-bottom:0.75rem}
+    .award-list{display:flex;flex-direction:column;gap:0.4rem}
+    .award-row{display:flex;align-items:baseline;gap:0.75rem;padding:0.5rem 0;border-bottom:1px solid var(--border);font-size:0.84rem}
+    .award-row:last-child{border-bottom:none}
+    .award-year{color:var(--accent);font-weight:600;font-size:0.78rem;white-space:nowrap;min-width:85px;flex-shrink:0}
+    .award-name{color:var(--text)}
+
+    /* ========== Skills ========== */
+    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
+    .skill-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)}
+    .skill-card:hover{background:var(--bg-card-hover);border-color:var(--border-hover)}
+    .skill-card h4{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
+    .skill-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem}
+    .skill-tag{font-size:0.7rem;padding:3px 10px;border-radius:12px;background:var(--accent-pale);color:var(--accent-light);font-weight:500}
+
+    /* ========== Self Eval ========== */
+    .eval-text{max-width:680px;margin:0 auto;padding:2rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
+    .eval-text p{font-size:0.9rem;color:var(--text-secondary);line-height:2.1;margin-bottom:0.6rem;text-align:left}
+    .eval-text p:last-child{margin-bottom:0}
+    .eval-text em{color:var(--accent-light);font-style:normal;font-weight:600}
+
+    /* ========== Contact ========== */
+    .contact-section{background:linear-gradient(180deg,var(--bg) 0%,var(--primary) 100%);color:#fff;text-align:center;padding:4rem 2rem}
+    .contact-section .section-label{color:var(--accent-light)}
+    .contact-section .section-title{color:#fff}
+    .contact-info{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2rem}
+    .contact-item{display:flex;align-items:center;gap:0.75rem;padding:0.9rem 1.5rem;border-radius:28px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);font-size:0.88rem;transition:var(--transition);cursor:pointer}
+    .contact-item:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25)}
+    .contact-note{margin-top:1.5rem;font-size:0.82rem;color:rgba(255,255,255,0.5)}
+
+    /* ========== Footer ========== */
+    .footer{text-align:center;padding:2rem;font-size:0.78rem;color:var(--text-light);background:var(--bg-alt)}
+
+    /* ========== Responsive ========== */
+    @media (max-width:768px){
+      .hero h1{font-size:2rem}
+      .section{padding:3rem 1.25rem}
+      .exp-header{padding:1.25rem}
+      .exp-body-inner{padding:0 1.25rem 1.25rem}
+      .edu-node{margin-bottom:2rem}
+      .projects-grid{grid-template-columns:1fr}
+      .skills-grid{grid-template-columns:1fr 1fr}
+      .nav-links{gap:1.1rem;font-size:0.78rem}
+      .exp-toggle{font-size:0.75rem;padding:6px 12px}
+      .practice-role{min-width:auto}
+      .hero-lines .hl{font-size:0.85rem}
+      .hero-persona{font-size:0.92rem}
+    }
+    @media (max-width:480px){
+      .skills-grid{grid-template-columns:1fr}
+      .comp-row{flex-direction:column;align-items:flex-start;gap:0.25rem}
+      .comp-row .date,.comp-row .rank{align-self:flex-start}
+      .practice-row{flex-direction:column;align-items:flex-start;gap:0.3rem}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ====== Navbar ====== -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-logo">ZYN</div>
+      <ul class="nav-links">
+        <li><a href="#about" class="active">关于</a></li>
+        <li><a href="#education">教育</a></li>
+        <li><a href="#internship">实习</a></li>
+        <li><a href="#projects">项目</a></li>
+        <li><a href="#competition">竞赛</a></li>
+        <li><a href="#contact">联系</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ====== Hero ====== -->
+  <section class="hero" id="about">
+    <div class="stars" id="stars"></div>
+    <p class="hero-eyebrow">Portfolio</p>
+    <h1>郑奕宁 · <span>产品&amp;运营作品集</span></h1>
+    <p class="hero-subtitle">
+      关注新媒介形态与青年文化热点，聚焦数字人文、消费文化与情感计算等跨学科研究领域。
+    </p>
+    <div class="hero-lines">
+      <div class="hl">一个在关心世界在发生什么新鲜事的<em>文科生</em></div>
+      <div class="hl">一个用数据读懂人心的<em>文化研究学人</em></div>
+      <div class="hl">一个穿梭在理论与产品之间的<em>跨界青年</em></div>
+    </div>
+    <p class="hero-tagline">人文温度 × 数据深度 × 用户研究</p>
+    <p class="hero-persona">ENFJ × 处女座 · 关怀世界<br>追求极致 · 步履不停</p>
+    <button class="hero-cta" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">了解更多 ↓</button>
+  </section>
+
+  <!-- ====== Education ====== -->
+  <section class="section" id="education">
+    <p class="section-label">Education</p>
+    <h2 class="section-title">教育背景</h2>
+    <p class="section-desc">从杭师到重大，从本科到硕士——一路爬坡，步履不停。</p>
+    <div class="edu-timeline">
+      <!-- 硕士 -->
+      <div class="edu-node current">
+        <div class="edu-dot">硕</div>
+        <div class="edu-card" onclick="this.parentElement.classList.toggle('open')">
+          <div class="edu-card-top">
+            <div>
+              <h4>中国语言文学 硕士 <span class="edu-degree">· 推免</span></h4>
+              <div class="edu-school">重庆大学 · 人文社会科学高等研究院</div>
+              <div class="edu-date">2025.09 — 至今（2028届）</div>
+            </div>
+            <span class="edu-card-arrow">▾</span>
+          </div>
+          <div class="edu-card-body">
+            <div class="edu-card-body-inner">
+              获2025-2026学年重庆大学学业A等奖学金、重庆市征文比赛一等奖。<br>
+              担任班级团支书、院团委干事，统筹支部日常管理及团委实践板块相关工作。
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 本科 -->
+      <div class="edu-node">
+        <div class="edu-dot">本</div>
+        <div class="edu-card" onclick="this.parentElement.classList.toggle('open')">
+          <div class="edu-card-top">
+            <div>
+              <h4>中国语言文学 学士 <span class="edu-degree">· GPA 4.16 / 5</span></h4>
+              <div class="edu-school">杭州师范大学 · 人文学院</div>
+              <div class="edu-date">2021.09 — 2025.06</div>
+            </div>
+            <span class="edu-card-arrow">▾</span>
+          </div>
+          <div class="edu-card-body">
+            <div class="edu-card-body-inner">
+              班级排名 1/41 · 专业排名年级前2% · 子渊书院成员<br>
+              连续三年获浙江省政府奖学金、校一等奖学金<br>
+              获评浙江省优秀毕业生、校优秀学生干部、优秀共青团干部、亚运会服务保障优秀志愿者
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Internship ====== -->
+  <section class="section" id="internship">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title">实习经历</h2>
+    <p class="section-desc">三段实习横跨内容运营、人力资源与产品运营，在多元角色中锤炼产品思维。</p>
+    <div class="exp-list">
+      <!-- 仟守文化 -->
+      <div class="exp-card">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <div class="exp-header-left">
+            <div class="exp-company">杭州仟守文化创意有限公司</div>
+            <div class="exp-role">新媒体运营实习生</div>
+            <div class="exp-date">2026.03 — 至今</div>
+          </div>
+          <div class="exp-toggle">展开了解我在干什么 <span class="arrow">▾</span></div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <h4>内容策划与用户增长</h4>
+            <ul>
+              <li>调研行业同类新媒体及对标账号内容生态，分析竞品运营模式，规划账号IP定位与内容优势</li>
+              <li>运营多平台短视频+图文新媒体矩阵，累计产出脚本20+；管理素材资源库归档素材百余份</li>
+              <li>通过选题优化与用户偏好分析，实现账号持续增长，粉丝量与互动率均提升40%以上</li>
+            </ul>
+            <h4>数据分析与市场监测</h4>
+            <ul>
+              <li>主导从0到1搭建运营数据库与可视化运营看板，监控曝光、点击、转化、互动四大核心体系</li>
+              <li>建立常态化数据运营机制，输出复盘报告迭代内容方向，账号平均CTR提升35%、CVR提升22%</li>
+            </ul>
+            <h4>用户渠道与运营维护</h4>
+            <ul>
+              <li>基于用户评论与互动数据进行标签归类，构建粉丝客户画像；负责维护账号评论互动与舆情监测</li>
+              <li>整合市场营销宣传渠道资源，优化投放策略，对接洽谈宣传账号合作，提升内容传播效果</li>
+            </ul>
+            <div class="exp-metrics">
+              <span class="exp-metric">粉丝增长 +40%</span><span class="exp-metric">CTR +35%</span><span class="exp-metric">CVR +22%</span><span class="exp-metric">脚本产出 20+</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 字节跳动 -->
+      <div class="exp-card">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <div class="exp-header-left">
+            <div class="exp-company">字节跳动 · 国际电商</div>
+            <div class="exp-role">人力资源实习生</div>
+            <div class="exp-date">2024.10 — 2025.02</div>
+          </div>
+          <div class="exp-toggle">展开了解我在干什么 <span class="arrow">▾</span></div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <h4>招聘运营</h4>
+            <ul>
+              <li>参与B端产品经理、前后端开发岗全流程招聘运营，对接技术研发团队拆解岗位需求并搭建专属人选画像</li>
+              <li>日均处理100+份简历，协调跨部门面试安排，支撑业务线人才供给，负责七十余枚校招offer保温、补录与跟进</li>
+            </ul>
+            <h4>人才布局</h4>
+            <ul>
+              <li>参与新业务0-1招聘搭建，开展定向人才与寻访Mapping，参与搭建行业TOP企业关键人才储备库</li>
+            </ul>
+            <h4>数据驱动</h4>
+            <ul>
+              <li>通过数据分析及可视化工具进行招聘漏斗分析，优化筛选标准、缩短初筛周期</li>
+              <li>沉淀数据看板为招聘策略迭代提供支撑，提升人选匹配精准度，沉淀可复用招聘SOP</li>
+            </ul>
+            <div class="exp-metrics">
+              <span class="exp-metric">日均处理 100+ 简历</span><span class="exp-metric">校招Offer 70+</span><span class="exp-metric">招聘漏斗分析</span><span class="exp-metric">SOP沉淀</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 中科创新 -->
+      <div class="exp-card">
+        <div class="exp-header" onclick="toggleExp(this)">
+          <div class="exp-header-left">
+            <div class="exp-company">中科创新未来教育科技有限责任公司</div>
+            <div class="exp-role">产品运营</div>
+            <div class="exp-date">2023 — 2024学年</div>
+          </div>
+          <div class="exp-toggle">展开了解我在干什么 <span class="arrow">▾</span></div>
+        </div>
+        <div class="exp-body">
+          <div class="exp-body-inner">
+            <h4>产品策划</h4>
+            <ul>
+              <li>针对中小学课后社团课程内容零散、标准化不足、家校沟通低效等核心痛点，参与课程产品化搭建与校园运营</li>
+              <li>提升课程满意度与用户选课率至90%</li>
+            </ul>
+            <h4>产品开发</h4>
+            <ul>
+              <li>拆解需求设计课程大纲与教学方案，开发"教-学-评"一体的科技类课程产品</li>
+              <li>配合团队完成微课录制与资源整合，构建可复用的标准化课程体系</li>
+            </ul>
+            <h4>运营成效</h4>
+            <ul>
+              <li>参与杭州校方对接，搭建校园教务运营体系，完成100+兼职教师的招募与培训</li>
+              <li>搭建家校社群运营链路，落地标准化课后反馈机制，推动课程在杭州十余所小学规模化落地，服务1000+学生</li>
+            </ul>
+            <div class="exp-metrics">
+              <span class="exp-metric">选课率 90%</span><span class="exp-metric">服务 1000+ 学生</span><span class="exp-metric">100+ 教师培训</span><span class="exp-metric">10+ 小学落地</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Projects ====== -->
+  <section class="section" id="projects">
+    <p class="section-label">Projects</p>
+    <h2 class="section-title">项目经历</h2>
+    <p class="section-desc">用镜头讲好故事，用文字做深研究——内容创作与学术课题两手抓。</p>
+    <h3 class="proj-subtitle-sm">媒体运营类</h3>
+    <div class="projects-grid">
+      <div class="project-card">
+        <h4>余杭竹家民宿宣传视频制作</h4>
+        <p class="proj-subtitle">大学生多媒体作品设计竞赛 · 校级三等奖</p>
+        <p>线下实地调研走访，与民宿负责人深度访谈，挖掘建筑特色与乡村文旅亮点；独立完成宣传视频脚本设计与拍摄路线规划，呈现沉浸式体验场景。</p>
+      </div>
+      <div class="project-card">
+        <h4>中医养生类视频内容策划</h4>
+        <p class="proj-subtitle">中国大学生计算机设计大赛 · 省级二等奖</p>
+        <p>负责文案撰写、内容策划与脚本精修，查阅专业文献将晦涩理论转化为通俗化视听表达；全程配合拍摄团队完成素材采集与内容校准，平衡科普专业性与传播性。</p>
+      </div>
+      <div class="project-card">
+        <h4>宋韵宋词合唱项目</h4>
+        <p class="proj-subtitle">全国第七届大学生艺术节 · 国家级一等奖</p>
+        <p>参与宋韵文化主题合唱展演，宋词曲目艺术化演绎与舞台呈现统筹，融合文学内涵与声乐表达，打造兼具审美价值与文化传播力的作品。</p>
+      </div>
+    </div>
+    <h3 class="proj-subtitle-sm">科研课题</h3>
+    <div class="research-list">
+      <div class="research-card">
+        <div class="r-level">国家级课题</div>
+        <h4>参与中国教育学会课题《少儿阶段中华优秀传统经典课外教学的创新与实践》</h4>
+        <p class="r-date">2024年 — 至今</p>
+        <ul>
+          <li>负责遴选经典篇目，以语用习得规律为主线，协助编订全套系列适配教材，以分级阅读形式逐步开发语言阅读体系</li>
+          <li>团队打造"知、教、行"合一的多维教学模式，推动中华优秀传统经典文化传承</li>
+        </ul>
+      </div>
+      <div class="research-card">
+        <div class="r-level">国家级课题</div>
+        <h4>参与国家社会科学基金项目《中古汉语心理动词研究》</h4>
+        <p class="r-date">2023 — 2024年 · 已结项</p>
+        <ul>
+          <li>对中古诗文典籍开展汉语心理动词语义语法研究，界定情绪类、意志类三大心理动词分类，建构"希望""喜悦"等29个下属语义概念场</li>
+          <li>依托汉籍数字化检索开展中文信息处理，从魏晋南北朝诗集中汇集心理动词并进行语法剖析与语义归纳，建立语料库</li>
+        </ul>
+      </div>
+      <div class="research-card">
+        <div class="r-level">省级课题</div>
+        <h4>浙江省新苗人才计划（核心成员）</h4>
+        <p class="r-date">2023 — 2024年 · 已结项</p>
+        <ul>
+          <li>作为前三名成员组建益志行团队，实地走访6处"全国学雷锋活动示范点"，独创三位一体式服务评价系统</li>
+          <li>攻克志愿服务组织品牌化建设瓶颈，团队取得1项设计专利、1项IP版权、1篇论文</li>
+        </ul>
+      </div>
+      <div class="research-card">
+        <div class="r-level">市级课题</div>
+        <h4>参与《杭州师范大学附属仓前实验小学国学文化课程建设》</h4>
+        <p class="r-date">2023 — 2024年</p>
+        <ul>
+          <li>参与导师研究团队，依托高校前沿资源录制线上微课，创新开展项目式学习与第二课堂</li>
+          <li>设立国学分享会、专题讲座等系统实践，组织艺术文化墙与艺术文化节，打造互动性强、多元融合的教学模式</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Competition ====== -->
+  <section class="section" id="competition">
+    <p class="section-label">Competition</p>
+    <h2 class="section-title">竞赛荣誉</h2>
+    <p class="section-desc">从诗词讲解到市场调研，从计算机设计到创新大赛——文理兼修、跨界突围。</p>
+
+    <div class="comp-group">
+      <div class="comp-group-title">
+        <span class="comp-group-badge nat">国家级</span>
+      </div>
+      <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">全国第七届大学生艺术节（展演）</span><span class="rank">排名 1/44</span><span class="date">2024.06</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第五届中华经典诵写讲大赛"诗教中国"诗词讲解大赛</span><span class="rank">排名 1/1</span><span class="date">2023.12</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第十四届"正大杯"全国大学生市场调查与分析大赛（本科组）</span><span class="rank"></span><span class="date">2024.06</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <div class="comp-group-title">
+        <span class="comp-group-badge prov">省级</span>
+      </div>
+      <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">浙江省大学生艺术节（展演）</span><span class="rank">排名 1/39</span><span class="date">2023.12</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第十一届中华经典诵写讲大赛"诗泽之江"诗词讲解竞赛</span><span class="rank">排名 1/1</span><span class="date">2023.11</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第十四届"正大杯"全国大学生市场调查与分析大赛（本科组）</span><span class="rank"></span><span class="date">2024.04</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">中国大学生计算机设计大赛</span><span class="rank"></span><span class="date">2024.06</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">浙江省国际大学生创新大赛（2024）</span><span class="rank"></span><span class="date">2024.07</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <div class="comp-group-title">
+        <span class="comp-group-badge sch">校级</span>
+      </div>
+      <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第十六届大学生计算机设计大赛</span><span class="rank"></span><span class="date">2023.06</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第二十一届"挑战杯"红色专项赛</span><span class="rank"></span><span class="date">2023.08</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第二十一届"挑战杯"大学生课外学术科技作品竞赛</span><span class="rank"></span><span class="date">2023.08</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">杭州师范大学"诗泽之江"诗词讲解竞赛</span><span class="rank">排名 1/1</span><span class="date">2023.07</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">第二十二届大学生多媒体作品设计竞赛</span><span class="rank"></span><span class="date">2023.10</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">杭州师范大学大学生师范生教学技能竞赛</span><span class="rank">排名 1/1</span><span class="date">2024.07</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Practice ====== -->
+  <section class="section">
+    <p class="section-label">Leadership</p>
+    <h2 class="section-title">实践经历</h2>
+    <p class="section-desc">从班级到学院再到学校——在组织与服务中锤炼统筹力与责任心。</p>
+    <div class="practice-list">
+      <div class="practice-row">
+        <span class="practice-role">团支书</span>
+        <span class="practice-org">重庆大学 · 高研院25级研究生</span>
+        <span class="practice-date">2025.09 — 至今</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">实践部干事</span>
+        <span class="practice-org">重庆大学 · 高研院团委</span>
+        <span class="practice-date">2025.09 — 至今</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">团支书</span>
+        <span class="practice-org">杭州师范大学 · 人文学院中文214班</span>
+        <span class="practice-date">2021.09 — 2025.06</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">党支部组织委员</span>
+        <span class="practice-org">杭州师范大学 · 人文学院本科生中文系第二党支部</span>
+        <span class="practice-date">2023.06 — 2024.06</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">学生会干事</span>
+        <span class="practice-org">杭州师范大学 · 人文学院学生会办公室</span>
+        <span class="practice-date">2021.11 — 2022.06</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">宣讲团副团长</span>
+        <span class="practice-org">杭州师范大学 · 青春榜样宣讲团</span>
+        <span class="practice-date">2023.05 — 2024.05</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">志愿者组长</span>
+        <span class="practice-org">杭州师范大学 · 第19届亚运会仓前校区场馆</span>
+        <span class="practice-date">2023.08 — 2023.10</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Awards ====== -->
+  <section class="section">
+    <p class="section-label">Awards</p>
+    <h2 class="section-title">荣誉奖励</h2>
+    <p class="section-desc">连续多年斩获省级与校级奖励，每一份荣誉都是前行的刻度。</p>
+    <div class="award-blocks">
+      <div class="award-block">
+        <h3>省级荣誉</h3>
+        <div class="award-list">
+          <div class="award-row"><span class="award-year">2024—2025</span><span class="award-name">浙江省优秀毕业生</span></div>
+          <div class="award-row"><span class="award-year">2021—2022</span><span class="award-name">浙江省政府奖学金</span></div>
+          <div class="award-row"><span class="award-year">2022—2023</span><span class="award-name">浙江省政府奖学金</span></div>
+          <div class="award-row"><span class="award-year">2023—2024</span><span class="award-name">浙江省政府奖学金</span></div>
+        </div>
+      </div>
+      <div class="award-block">
+        <h3>校级荣誉</h3>
+        <div class="award-list">
+          <div class="award-row"><span class="award-year">2021—2022</span><span class="award-name">杭州师范大学优秀学生一等奖学金</span></div>
+          <div class="award-row"><span class="award-year">2022—2023</span><span class="award-name">杭州师范大学优秀学生一等奖学金</span></div>
+          <div class="award-row"><span class="award-year">2022—2023</span><span class="award-name">杭州师范大学三好学生</span></div>
+          <div class="award-row"><span class="award-year">2021—2022</span><span class="award-name">杭州师范大学优秀学生干部</span></div>
+          <div class="award-row"><span class="award-year">2022—2023</span><span class="award-name">杭州师范大学优秀共青团干部</span></div>
+          <div class="award-row"><span class="award-year">2023—2024</span><span class="award-name">杭州师范大学优秀共青团员</span></div>
+          <div class="award-row"><span class="award-year">2023—2024</span><span class="award-name">杭州师范大学（亚运会服务保障）优秀志愿者</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Skills ====== -->
+  <section class="section">
+    <p class="section-label">Skills</p>
+    <h2 class="section-title">技能证书</h2>
+    <p class="section-desc">工具是手段，思维是核心——跨学科工具箱让产品直觉更精准。</p>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h4>产品工具</h4>
+        <p>熟悉产品全生命周期管理、需求调研与分析、PRD撰写、数据驱动迭代等方法论</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Figma</span><span class="skill-tag">Axure</span><span class="skill-tag">XMind</span><span class="skill-tag">PRD</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>数据分析</h4>
+        <p>熟练运用数据分析工具进行运营分析与可视化，搭建数据看板与复盘报告</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Excel</span><span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">数据看板</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>语言能力</h4>
+        <p>具备良好的中英文沟通与表达能力</p>
+        <div class="skill-tags">
+          <span class="skill-tag">CET-4</span><span class="skill-tag">CET-6</span><span class="skill-tag">CET-6 口语</span><span class="skill-tag">普通话二甲</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h4>内容运营</h4>
+        <p>具备视频脚本策划、文案撰写与新媒体内容运营能力，作品多次获奖</p>
+        <div class="skill-tags">
+          <span class="skill-tag">脚本撰写</span><span class="skill-tag">视频制作</span><span class="skill-tag">内容策划</span><span class="skill-tag">新媒体运营</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== Self Evaluation ====== -->
+  <section class="section">
+    <p class="section-label">About Me</p>
+    <h2 class="section-title">自我评价</h2>
+    <div class="eval-text">
+      <p>我是一名对世界保持好奇的<em>文科生</em>，也是一名用数据说话的<em>中文学人</em>。</p>
+      <p>从古典诗词的语义场研究到新媒体内容运营，从科研课题到互联网大厂——我始终相信，<em>人文的温度</em>与<em>数据的精度</em>可以相互照亮。</p>
+      <p>关注新媒介形态下的青年文化变迁，热爱消费文化与情感计算等前沿议题。<br>ENFJ 使我善于共情与协作，处女座让我对细节永不懈怠。</p>
+      <p>关怀世界，追求极致，步履不停。<br>期待在<em>产品运营</em>的道路上，一同探索更多可能。</p>
+    </div>
+  </section>
+
+  <!-- ====== Contact ====== -->
+  <section class="contact-section" id="contact">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">期待与你合作</h2>
+    <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto;font-size:0.92rem">寻找产品运营 / 产品经理 / 运营类实习机会，欢迎随时联系交流</p>
+    <div class="contact-info">
+      <a href="mailto:zhengyining919@163.com" class="contact-item">
+        <span>✉️ zhengyining919@163.com</span>
+      </a>
+      <a href="tel:15057017446" class="contact-item">
+        <span>📞 15057017446</span>
+      </a>
+    </div>
+    <p class="contact-note">浙江衢州 · 中共党员 · 28届硕士在读</p>
+  </section>
+
+  <!-- ====== Footer ====== -->
+  <footer class="footer">
+    <p>© 2026 郑奕宁 · 产品&amp;运营作品集</p>
+    <p style="margin-top:4px">Built with care · 持续更新中</p>
+  </footer>
+
+  <script>
+    function toggleExp(header){header.parentElement.classList.toggle('open')}
+    const navLinks=document.querySelectorAll('.nav-links a');
+    const sections=[];
+    navLinks.forEach(link=>{const id=link.getAttribute('href').substring(1);const el=document.getElementById(id);if(el)sections.push({id,el})});
+    window.addEventListener('scroll',()=>{let c='';sections.forEach(({id,el})=>{if(window.scrollY>=el.offsetTop-100)c=id});navLinks.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+c)l.classList.add('active')})});
+    // Stars
+    const starsContainer=document.getElementById('stars');
+    for(let i=0;i<80;i++){
+      const s=document.createElement('div');
+      s.className='star';
+      const size=Math.random()*2.5+1;
+      s.style.cssText='width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--dur:'+(Math.random()*3+2)+'s;--delay:'+(Math.random()*4)+'s';
+      starsContainer.appendChild(s);
+    }
+  </script>
+</body>
+</html>
