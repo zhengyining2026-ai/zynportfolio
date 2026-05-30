@@ -159,13 +159,14 @@
     .exp-metric{padding:4px 12px;border-radius:14px;font-size:0.75rem;font-weight:600;background:var(--accent-pale);color:var(--accent-light)}
 
     /* ========== Projects ========== */
-    .proj-subtitle-sm{font-size:0.88rem;color:var(--accent-light);font-weight:700;text-align:center;margin-bottom:1rem}
+    .proj-subtitle-sm{font-size:0.98rem;color:#fff;font-weight:700;text-align:center;margin-bottom:1rem;margin-top:2rem}
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.25rem;margin-bottom:2.5rem}
     .project-card{padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)}
     .project-card:hover{background:var(--bg-card-hover);border-color:var(--border-hover);transform:translateY(-2px)}
     .project-card h4{font-size:0.95rem;font-weight:700;color:#fff}
     .project-card .proj-subtitle{font-size:0.78rem;color:var(--accent-light);font-weight:500;margin-top:4px}
     .project-card p{font-size:0.82rem;color:var(--text-secondary);margin-top:0.6rem;line-height:1.7}
+    .project-card.project-featured{border-left:3px solid var(--accent);display:block;grid-column:1/-1}
 
     /* ========== Research Cards ========== */
     .research-list{display:flex;flex-direction:column;gap:1rem}
@@ -221,6 +222,52 @@
     .skill-tags{display:flex;flex-wrap:wrap;gap:0.4rem;margin-top:0.75rem}
     .skill-tag{font-size:0.7rem;padding:3px 10px;border-radius:12px;background:var(--accent-pale);color:var(--accent-light);font-weight:500}
 
+    /* ========== ResumePolish ========== */
+    .rp-subtitle{font-size:0.82rem;color:var(--text-light);text-align:center;margin-bottom:1rem}
+    .rp-name{font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem}
+    .rp-section-header{font-size:0.95rem;font-weight:700;color:var(--accent-light);text-align:left;margin:2.5rem 0 1rem;padding-left:0.6rem;border-left:3px solid var(--accent)}
+    .rp-intro{max-width:720px;margin:0 auto;font-size:0.88rem;color:var(--text-secondary);line-height:1.9;text-align:left}
+    .rp-intro h4{font-size:0.84rem;color:var(--accent-light);font-weight:600;margin:1.1rem 0 0.25rem}
+    .rp-intro h4:first-child{margin-top:0}
+    .rp-intro em{color:var(--accent-light);font-style:normal;font-weight:600}
+    .rp-link-wrap{text-align:center;margin:0.75rem 0 2rem}
+    .rp-link{
+      display:inline-flex;align-items:center;gap:0.4rem;
+      padding:10px 24px;border-radius:22px;border:1px solid var(--accent);
+      color:var(--accent-light);font-size:0.85rem;font-weight:600;
+      transition:var(--transition);text-decoration:none;
+    }
+    .rp-link:hover{background:var(--accent);color:#fff;transform:translateY(-1px);box-shadow:0 8px 20px rgba(77,138,240,0.25)}
+    .rp-link .arrow-ext{font-size:0.75rem}
+    /* RP Grid 2x2 — unified big box */
+    .rp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:1rem}
+    .rp-grid-item{background:var(--bg-card);padding:1.5rem;cursor:pointer;transition:var(--transition);position:relative;border:none}
+    .rp-grid-item:hover{background:var(--bg-card-hover);transform:none}
+    .rp-grid-item .rp-grid-num{font-size:0.7rem;color:var(--accent);font-weight:700;margin-bottom:0.5rem}
+    .rp-grid-item h4{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.3rem}
+    .rp-grid-item .rp-grid-desc{font-size:0.78rem;color:var(--text-secondary);line-height:1.6}
+    .rp-grid-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease}
+    .rp-grid-item.open .rp-grid-body{max-height:1300px}
+    .rp-grid-body-inner{padding-top:0.75rem;margin-top:0.75rem;border-top:1px solid var(--border);font-size:0.8rem;color:var(--text-secondary);line-height:1.85}
+    .rp-grid-body-inner h5{font-size:0.78rem;color:var(--accent-light);font-weight:600;margin:0.75rem 0 0.3rem}
+    .rp-grid-body-inner p{margin-bottom:0.35rem}
+    .rp-grid-arrow{font-size:0.65rem;color:var(--text-light);position:absolute;bottom:1rem;right:1rem;transition:var(--transition)}
+    .rp-grid-item.open .rp-grid-arrow{transform:rotate(180deg);color:var(--accent-light)}
+    /* RP Reflection */
+    .rp-reflection{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-top:1.5rem}
+    .rp-reflection h4{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.75rem}
+    .rp-reflection p{font-size:0.84rem;color:var(--text-secondary);line-height:1.9;margin-bottom:0.5rem}
+
+    /* ========== RP Project Block ========== */
+    .rp-project-block{
+      background:linear-gradient(135deg, rgba(77,138,240,0.05) 0%, rgba(13,17,25,0.85) 100%);
+      border:1px solid var(--border);
+      border-left:3px solid var(--accent);
+      border-radius:var(--radius);
+      padding:2rem 2rem 1.5rem;
+      margin-bottom:2.5rem;
+    }
+
     /* ========== Self Eval ========== */
     .eval-text{max-width:680px;margin:0 auto;padding:2rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
     .eval-text p{font-size:0.9rem;color:var(--text-secondary);line-height:2.1;margin-bottom:0.6rem;text-align:left}
@@ -234,7 +281,7 @@
     .contact-info{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem;margin-top:2rem}
     .contact-item{display:flex;align-items:center;gap:0.75rem;padding:0.9rem 1.5rem;border-radius:28px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);font-size:0.88rem;transition:var(--transition);cursor:pointer}
     .contact-item:hover{background:rgba(255,255,255,0.12);border-color:rgba(255,255,255,0.25)}
-    .contact-note{margin-top:1.5rem;font-size:0.82rem;color:rgba(255,255,255,0.5)}
+    .contact-note{margin-top:1.5rem;font-size:1.15rem;color:rgba(255,255,255,0.55);font-style:italic;line-height:2}
 
     /* ========== Footer ========== */
     .footer{text-align:center;padding:2rem;font-size:0.78rem;color:var(--text-light);background:var(--bg-alt)}
@@ -253,6 +300,10 @@
       .practice-role{min-width:auto}
       .hero-lines .hl{font-size:0.85rem}
       .hero-persona{font-size:0.92rem}
+      .rp-grid{grid-template-columns:1fr}
+      .rp-intro{font-size:0.84rem}
+      .rp-grid-item{padding:1.25rem}
+      .rp-project-block{padding:1.5rem 1.25rem 1rem}
     }
     @media (max-width:480px){
       .skills-grid{grid-template-columns:1fr}
@@ -271,6 +322,7 @@
       <ul class="nav-links">
         <li><a href="#about" class="active">关于</a></li>
         <li><a href="#education">教育</a></li>
+        <li><a href="#projects">项目</a></li>
         <li><a href="#internship">实习</a></li>
         <li><a href="#projects">项目</a></li>
         <li><a href="#competition">竞赛</a></li>
@@ -281,7 +333,6 @@
 
   <!-- ====== Hero ====== -->
   <section class="hero" id="about">
-    <div class="stars" id="stars"></div>
     <p class="hero-eyebrow">Portfolio</p>
     <h1>郑奕宁 · <span>产品&amp;运营作品集</span></h1>
     <p class="hero-subtitle">
@@ -293,7 +344,7 @@
       <div class="hl">一个穿梭在理论与产品之间的<em>跨界青年</em></div>
     </div>
     <p class="hero-tagline">人文温度 × 数据深度 × 用户研究</p>
-    <p class="hero-persona">ENFJ × 处女座 · 关怀世界<br>追求极致 · 步履不停</p>
+    <p class="hero-persona">ENFJ × 处女座<br>关怀世界 · 追求极致 · 步履不停</p>
     <button class="hero-cta" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">了解更多 ↓</button>
   </section>
 
@@ -301,7 +352,7 @@
   <section class="section" id="education">
     <p class="section-label">Education</p>
     <h2 class="section-title">教育背景</h2>
-    <p class="section-desc">从杭师到重大，从本科到硕士——一路爬坡，步履不停。</p>
+    <p class="section-desc">热爱指引，无问西东。</p>
     <div class="edu-timeline">
       <!-- 硕士 -->
       <div class="edu-node current">
@@ -351,7 +402,7 @@
   <section class="section" id="internship">
     <p class="section-label">Experience</p>
     <h2 class="section-title">实习经历</h2>
-    <p class="section-desc">三段实习横跨内容运营、人力资源与产品运营，在多元角色中锤炼产品思维。</p>
+    <p class="section-desc">在多元角色中锤炼产品与运营思维。</p>
     <div class="exp-list">
       <!-- 仟守文化 -->
       <div class="exp-card">
@@ -459,9 +510,109 @@
   <section class="section" id="projects">
     <p class="section-label">Projects</p>
     <h2 class="section-title">项目经历</h2>
-    <p class="section-desc">用镜头讲好故事，用文字做深研究——内容创作与学术课题两手抓。</p>
+    <p class="section-desc">用镜头讲好故事，用文字做深研究，用科技赋能生活——深耕学术也关心世界。</p>
+    <h3 class="proj-subtitle-sm">产品作品</h3>
+    <!-- ====== ResumePolish 作为项目经历第一项 ====== -->
+    <div class="rp-project-block">
+      <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:600;text-align:center;margin-bottom:0.5rem">Vibe Coding</p>
+      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">智汇人才 · ResumePolish 简历定向打磨系统</h3>
+
+      <div class="rp-link-wrap">
+        <a href="https://zhengyining2026-ai.github.io/resumepolish/" class="rp-link" target="_blank">🔗 访问 ResumePolish 系统 <span class="arrow-ext">↗</span></a>
+      </div>
+
+      <h3 class="rp-section-header">设计初衷</h3>
+      <div class="rp-intro">
+        <h4>锚定市场需求</h4>
+        <p>作为有一线 HR 实习经验的研究生，在与身边求职的同学沟通、复盘往届候选人经历时，我发现了一个普遍困境：大多数求职者并非能力不足，而是看不懂 JD 核心要求，简历经历与岗位需求完全脱节，投递缺乏规划，越投越陷入自我焦虑。</p>
+        <h4>策划功能设计</h4>
+        <p>基于这些真实痛点，我用 CodeBuddy 搭建了这套简历定向打磨系统。跳出传统简历工具"通用模板化"的误区，站在 HR 筛选视角，帮求职者精准对标岗位、科学管理全流程，同时兼顾求职过程中的情绪关怀。</p>
+        <h4>厘清系统链路</h4>
+        <p>全流程投递状态管理，完整覆盖从简历优化到求职复盘的全场景：</p>
+        <p style="margin-top:0.3rem">共情式首页 → 创建求职任务管理看板 → 三步 AI 赋能打磨简历。</p>
+      </div>
+
+      <h3 class="rp-section-header">产品功能亮点</h3>
+      <div class="rp-grid">
+        <!-- Feature 1 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">01</span>
+          <h4>人文关怀式首页</h4>
+          <p class="rp-grid-desc">先安抚情绪，再提供工具，用共情留住真实求职用户</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>市面上绝大多数简历工具都是冰冷的功能页面，完全忽略了求职者的焦虑与自我怀疑。我将首页设计为共情治愈型页面，用"小纸船"意象 + 温柔文案，直面"简历石沉大海、同辈内卷、自我否定"等求职痛点，先建立情感共鸣，再引导工具使用。</p>
+              <p>采用昵称一键登录的轻量化模式，无需复杂注册，极大降低使用门槛，留住求职中的普通学生用户。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">02</span>
+          <h4>个人求职任务看板</h4>
+          <p class="rp-grid-desc">可视化管理，告别盲目海投，把控求职全流程节奏</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>用户登录后进入专属个人面板，以问候式欢迎语营造专属感，核心实现求职全流程自我管控：</p>
+              <h5>投递状态全景可视化</h5>
+              <p>将所有求职任务分为计划中、已投递、审核中、面试中、已拒绝、已录取6个核心状态，直观展示整体求职进度。</p>
+              <h5>精细化岗位分类</h5>
+              <p>按照研发、运营、产品、职能、设计、销售等赛道筛选求职任务，适配不同求职方向。</p>
+              <h5>任务全生命周期管理</h5>
+              <p>支持创建、编辑、删除求职任务，每个任务绑定对应岗位信息，相当于个人专属求职项目看板。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">03</span>
+          <h4>精细化新建求职任务</h4>
+          <p class="rp-grid-desc">锚定岗位，从源头精准定位，锁定目标岗位核心信息</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>创建求职任务时，进行多维度岗位信息录入，完整锁定目标岗位核心信息：包含目标岗位、目标公司、职位类别、工作地点、职位链接、计划投递日期，细分岗位赛道与城市，适配校招、实习、社招全场景。从源头锚定简历优化方向，避免千篇一律、泛化无重点。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 4 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">04</span>
+          <h4>三大核心 AI 简历打磨</h4>
+          <p class="rp-grid-desc">JD解析 → STAR生成 → 经历融合，三步精准对标岗位</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>完全基于 HR 筛选简历的真实逻辑，拆解为三步闭环，针对性解决"看不懂 JD、不会写经历、经历和岗位不匹配"三大核心痛点：</p>
+              <h5>第一步：JD 深度解析 · 定位目标</h5>
+              <p>粘贴岗位 JD 文本 / 职位链接，系统自动拆解岗位要求，从职能大类、核心职责、硬技能、软件能力、经验要求、软素质等维度提取岗位核心关键词与用人偏好。</p>
+              <h5>第二步：STAR 法则简历生成 · 规范表达</h5>
+              <p>基于解析后的 JD，自动按照 HR 认可的 STAR 法则生成四大模块简历话术：S 角色定位、T/A 关键行动、R 价值贡献、自我描述。</p>
+              <h5>第三步：经历融合 · 个性化真实润色</h5>
+              <p>提供两种适配模式：基于 JD 直接生成完整适配简历，或上传个人真实经历与 JD 逐点匹配。在真实经历基础上优化表达，规避简历造假风险，实现岗位精准匹配。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="rp-section-header">产品反思与优化</h3>
+      <div class="rp-reflection">
+        <p>目前系统最大短板集中在 AI 底层分析能力不足：JD 拆解颗粒度较粗糙，对岗位核心能力与技能权重的划分不够精准，关键词提取与用人偏好分析偏浅层；STAR 生成与经历融合时，AI 对行业业务逻辑、岗位专业术语的理解不足，输出话术通用性强、岗位针对性弱。</p>
+        <p>后续将优化 AI 提示词体系，完善 JD 拆解的多维度权重，结合大厂真实招聘 JD 样本训练模型，强化岗位与个人经历的精准匹配度，打磨输出内容的针对性。</p>
+      </div>
+    </div>
     <h3 class="proj-subtitle-sm">媒体运营类</h3>
     <div class="projects-grid">
+      <!-- AI 短剧 -->
+      <div class="project-card project-featured">
+        <h4>AI 短剧《大约一万趟》开发</h4>
+        <p class="proj-subtitle">网易有道 AIGC 视频创想大赛 · 三等奖</p>
+        <p><em style="color:var(--accent-light);font-weight:600;">项目背景：</em>母亲节公益主题 AI 短剧，以重庆女性挑山工为真实创作背景，聚焦该群体在历史与生活中承担的责任与价值，通过 AIGC 技术打造公益短篇，传递人文关怀。</p>
+        <p><em style="color:var(--accent-light);font-weight:600;">我的职责：</em>作为核心团队成员，全程参与项目开发制作；独立负责情节剧本指导与设计、AI 原创歌词及歌曲创作，把控故事叙事与音乐内容方向。</p>
+        <p><em style="color:var(--accent-light);font-weight:600;">项目成果：</em>作品全网传播效果优异，单平台播放量 13.8W+；凭借创意与公益价值，荣获网易有道 AIGC 视频创想大赛三等奖。</p>
+      </div>
       <div class="project-card">
         <h4>余杭竹家民宿宣传视频制作</h4>
         <p class="proj-subtitle">大学生多媒体作品设计竞赛 · 校级三等奖</p>
@@ -478,7 +629,7 @@
         <p>参与宋韵文化主题合唱展演，宋词曲目艺术化演绎与舞台呈现统筹，融合文学内涵与声乐表达，打造兼具审美价值与文化传播力的作品。</p>
       </div>
     </div>
-    <h3 class="proj-subtitle-sm">科研课题</h3>
+    <h3 class="proj-subtitle-sm">科研课题类</h3>
     <div class="research-list">
       <div class="research-card">
         <div class="r-level">国家级课题</div>
@@ -531,10 +682,10 @@
       </div>
       <div class="comp-group-items">
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">全国第七届大学生艺术节（展演）</span><span class="rank">排名 1/44</span><span class="date">2024.06</span>
+          <span class="bul">·</span><span class="name">全国第七届大学生艺术节（展演）</span><span class="date">2024.06</span>
         </div>
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">第五届中华经典诵写讲大赛"诗教中国"诗词讲解大赛</span><span class="rank">排名 1/1</span><span class="date">2023.12</span>
+          <span class="bul">·</span><span class="name">第五届中华经典诵写讲大赛"诗教中国"诗词讲解大赛</span><span class="date">2023.12</span>
         </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">第十四届"正大杯"全国大学生市场调查与分析大赛（本科组）</span><span class="rank"></span><span class="date">2024.06</span>
@@ -548,10 +699,10 @@
       </div>
       <div class="comp-group-items">
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">浙江省大学生艺术节（展演）</span><span class="rank">排名 1/39</span><span class="date">2023.12</span>
+          <span class="bul">·</span><span class="name">浙江省大学生艺术节（展演）</span><span class="date">2023.12</span>
         </div>
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">第十一届中华经典诵写讲大赛"诗泽之江"诗词讲解竞赛</span><span class="rank">排名 1/1</span><span class="date">2023.11</span>
+          <span class="bul">·</span><span class="name">第十一届中华经典诵写讲大赛"诗泽之江"诗词讲解竞赛</span><span class="date">2023.11</span>
         </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">第十四届"正大杯"全国大学生市场调查与分析大赛（本科组）</span><span class="rank"></span><span class="date">2024.04</span>
@@ -580,13 +731,13 @@
           <span class="bul">·</span><span class="name">第二十一届"挑战杯"大学生课外学术科技作品竞赛</span><span class="rank"></span><span class="date">2023.08</span>
         </div>
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">杭州师范大学"诗泽之江"诗词讲解竞赛</span><span class="rank">排名 1/1</span><span class="date">2023.07</span>
+          <span class="bul">·</span><span class="name">杭州师范大学"诗泽之江"诗词讲解竞赛</span><span class="date">2023.07</span>
         </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">第二十二届大学生多媒体作品设计竞赛</span><span class="rank"></span><span class="date">2023.10</span>
         </div>
         <div class="comp-row">
-          <span class="bul">·</span><span class="name">杭州师范大学大学生师范生教学技能竞赛</span><span class="rank">排名 1/1</span><span class="date">2024.07</span>
+          <span class="bul">·</span><span class="name">杭州师范大学大学生师范生教学技能竞赛</span><span class="date">2024.07</span>
         </div>
       </div>
     </div>
@@ -596,7 +747,7 @@
   <section class="section">
     <p class="section-label">Leadership</p>
     <h2 class="section-title">实践经历</h2>
-    <p class="section-desc">从班级到学院再到学校——在组织与服务中锤炼统筹力与责任心。</p>
+    <p class="section-desc">在组织与服务中锤炼统筹力与责任心——在团队中学会管理、沟通与协调。</p>
     <div class="practice-list">
       <div class="practice-row">
         <span class="practice-role">团支书</span>
@@ -640,12 +791,11 @@
   <section class="section">
     <p class="section-label">Awards</p>
     <h2 class="section-title">荣誉奖励</h2>
-    <p class="section-desc">连续多年斩获省级与校级奖励，每一份荣誉都是前行的刻度。</p>
+    <p class="section-desc">每一份荣誉都是前行的刻度。</p>
     <div class="award-blocks">
       <div class="award-block">
         <h3>省级荣誉</h3>
         <div class="award-list">
-          <div class="award-row"><span class="award-year">2024—2025</span><span class="award-name">浙江省优秀毕业生</span></div>
           <div class="award-row"><span class="award-year">2021—2022</span><span class="award-name">浙江省政府奖学金</span></div>
           <div class="award-row"><span class="award-year">2022—2023</span><span class="award-name">浙江省政府奖学金</span></div>
           <div class="award-row"><span class="award-year">2023—2024</span><span class="award-name">浙江省政府奖学金</span></div>
@@ -669,7 +819,7 @@
   <!-- ====== Skills ====== -->
   <section class="section">
     <p class="section-label">Skills</p>
-    <h2 class="section-title">技能证书</h2>
+    <h2 class="section-title">技能与方法</h2>
     <p class="section-desc">工具是手段，思维是核心——跨学科工具箱让产品直觉更精准。</p>
     <div class="skills-grid">
       <div class="skill-card">
@@ -710,7 +860,7 @@
     <div class="eval-text">
       <p>我是一名对世界保持好奇的<em>文科生</em>，也是一名用数据说话的<em>中文学人</em>。</p>
       <p>从古典诗词的语义场研究到新媒体内容运营，从科研课题到互联网大厂——我始终相信，<em>人文的温度</em>与<em>数据的精度</em>可以相互照亮。</p>
-      <p>关注新媒介形态下的青年文化变迁，热爱消费文化与情感计算等前沿议题。<br>ENFJ 使我善于共情与协作，处女座让我对细节永不懈怠。</p>
+      <p>关注青年文化与美学热点，聚焦新媒介、数字人文、消费文化与情感计算等跨学科研究领域。</p>
       <p>关怀世界，追求极致，步履不停。<br>期待在<em>产品运营</em>的道路上，一同探索更多可能。</p>
     </div>
   </section>
@@ -728,7 +878,7 @@
         <span>📞 15057017446</span>
       </a>
     </div>
-    <p class="contact-note">浙江衢州 · 中共党员 · 28届硕士在读</p>
+    <p class="contact-note">Per aspera ad astra<br>循此苦旅，终抵繁星</p>
   </section>
 
   <!-- ====== Footer ====== -->
@@ -743,15 +893,6 @@
     const sections=[];
     navLinks.forEach(link=>{const id=link.getAttribute('href').substring(1);const el=document.getElementById(id);if(el)sections.push({id,el})});
     window.addEventListener('scroll',()=>{let c='';sections.forEach(({id,el})=>{if(window.scrollY>=el.offsetTop-100)c=id});navLinks.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+c)l.classList.add('active')})});
-    // Stars
-    const starsContainer=document.getElementById('stars');
-    for(let i=0;i<80;i++){
-      const s=document.createElement('div');
-      s.className='star';
-      const size=Math.random()*2.5+1;
-      s.style.cssText='width:'+size+'px;height:'+size+'px;left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;--dur:'+(Math.random()*3+2)+'s;--delay:'+(Math.random()*4)+'s';
-      starsContainer.appendChild(s);
-    }
   </script>
 </body>
 </html>
