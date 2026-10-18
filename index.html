@@ -283,7 +283,7 @@
     /* AI 作品重点展示 */
     .work-feature{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem}
     .work-top{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
-    .work-poster{flex:0 0 280px;max-width:100%}
+    .work-poster{flex:0 0 360px;max-width:100%}
     .work-poster img{width:100%;display:block;border-radius:var(--radius-sm)}
     .work-info{flex:1;min-width:260px}
     .work-info h3{color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:0.35rem}
@@ -292,8 +292,9 @@
     .work-desc{color:var(--text-secondary);font-size:0.82rem;line-height:1.7;margin-bottom:0.75rem}
     .work-link{display:inline-block;font-size:0.78rem;color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:20px;padding:0.3rem 0.9rem;transition:var(--transition)}
     .work-link:hover{border-color:var(--accent);background:rgba(77,138,240,0.08)}
-    .work-certs{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.25rem}
-    @media(max-width:760px){.work-poster{flex:1 1 100%}.work-certs{grid-template-columns:1fr}}
+    .work-certs{display:grid;grid-template-columns:repeat(2,minmax(0,230px));justify-content:center;gap:1rem;margin-top:1.25rem}
+    .work-certs .wb-shot img{max-height:210px;object-fit:cover;object-position:top center}
+    @media(max-width:760px){.work-poster{flex:1 1 100%}.work-certs{grid-template-columns:repeat(2,minmax(0,1fr))}}
     /* Hero 求职意向 */
     .hero-intent{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:0.5rem;margin-top:1.25rem;padding:0.6rem 1.4rem;border:1px solid var(--accent);border-radius:26px;background:rgba(77,138,240,0.06);font-size:0.88rem}
     .hi-label{color:#fff;font-weight:700;letter-spacing:2px;margin-right:0.3rem}
@@ -370,13 +371,15 @@
     .rp-project-block:hover::after{transform:rotate(0.9deg) translateY(-2px)}
 
     /* Welcome 照片画廊（无缝滚动） */
-    .photo-strip{overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-card);padding:0.9rem 0;margin-top:2.25rem}
-    .photo-track{display:flex;gap:0.9rem;width:max-content;animation:marquee 46s linear infinite}
-    .photo-strip:hover .photo-track{animation-play-state:paused}
-    .photo-track img{height:150px;width:auto;border-radius:10px;border:1px solid var(--border);object-fit:cover;transition:var(--transition);filter:saturate(0.92)}
-    .photo-track img:hover{filter:none;transform:translateY(-4px) scale(1.03);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
-    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-    .photo-caption{text-align:center;font-size:0.72rem;color:var(--text-secondary);margin-top:0.8rem;letter-spacing:3px}
+    /* Hero 个人照片卡（照片放入 photos/me.png 即自动显示） */
+    .hero-photo{position:relative;width:250px;height:320px;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:linear-gradient(160deg,rgba(77,138,240,0.16),rgba(64,208,190,0.08));box-shadow:0 18px 44px rgba(0,0,0,0.4);margin:2.5rem auto 0;animation:heroFloat 6s ease-in-out infinite}
+    @keyframes heroFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:2}
+    .hero-photo-card{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.3rem;z-index:1}
+    .hp-name{font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:5px}
+    .hp-en{font-size:0.62rem;letter-spacing:3px;color:var(--accent)}
+    .hp-line{font-size:0.72rem;color:var(--text-secondary);margin-top:0.6rem}
+    @media(min-width:1400px){.hero-photo{position:absolute;right:5%;top:50%;margin:0;transform:translateY(-50%)}}
 
     /* 产品软素质卡片 */
     .soft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:980px;margin:0 auto}
@@ -419,6 +422,16 @@
       animation:twinkle 4s ease-in-out infinite}
     .contact-section::after{animation-delay:2s}
     @keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:0.65}}
+
+    /* 板块编号（01 / 02 ...） */
+    body{counter-reset:sec}
+    .section{counter-increment:sec}
+    .section-label::before{content:counter(sec,decimal-leading-zero) " / ";opacity:0.65}
+
+    /* 卡片错峰淡入 */
+    .exp-list .exp-card:nth-child(2),.soft-grid .soft-card:nth-child(2),.skills-grid .skill-card:nth-child(2){transition-delay:.1s}
+    .exp-list .exp-card:nth-child(3),.soft-grid .soft-card:nth-child(3),.skills-grid .skill-card:nth-child(3){transition-delay:.2s}
+    .exp-list .exp-card:nth-child(4),.soft-grid .soft-card:nth-child(4),.skills-grid .skill-card:nth-child(4){transition-delay:.3s}
   </style>
 </head>
 <body>
@@ -462,13 +475,14 @@
     </div>
     <p class="hero-persona">ENFJ × 处女座<br>关怀世界 · 追求极致 · 步履不停</p>
     <button class="hero-cta" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">了解更多 ↓</button>
-    <div class="photo-strip">
-      <div class="photo-track">
-        <img src="photos/img-3045.png" alt="生活剪影"><img src="photos/img-3046.png" alt="生活剪影"><img src="photos/img-3047.png" alt="生活剪影"><img src="photos/img-3048.png" alt="生活剪影"><img src="photos/img-3049.png" alt="生活剪影"><img src="photos/img-3050.png" alt="生活剪影"><img src="photos/img-3051.png" alt="生活剪影"><img src="photos/img-3052.png" alt="生活剪影"><img src="photos/img-3053.png" alt="生活剪影"><img src="photos/img-3054.png" alt="生活剪影"><img src="photos/img-3055.png" alt="生活剪影"><img src="photos/img-3056.png" alt="生活剪影"><img src="photos/img-3057.png" alt="生活剪影">
-        <img src="photos/img-3045.png" alt=""><img src="photos/img-3046.png" alt=""><img src="photos/img-3047.png" alt=""><img src="photos/img-3048.png" alt=""><img src="photos/img-3049.png" alt=""><img src="photos/img-3050.png" alt=""><img src="photos/img-3051.png" alt=""><img src="photos/img-3052.png" alt=""><img src="photos/img-3053.png" alt=""><img src="photos/img-3054.png" alt=""><img src="photos/img-3055.png" alt=""><img src="photos/img-3056.png" alt=""><img src="photos/img-3057.png" alt="">
+    <div class="hero-photo">
+      <img src="photos/me.png" alt="郑奕宁" onerror="this.remove()">
+      <div class="hero-photo-card">
+        <p class="hp-name">郑奕宁</p>
+        <p class="hp-en">ZHENG YINING</p>
+        <p class="hp-line">产品 · 运营 · AI 创作</p>
       </div>
     </div>
-    <p class="photo-caption">LIFE & CAMPUS · 生活与校园剪影</p>
   </section>
 
   <!-- ====== Education ====== -->
@@ -985,17 +999,6 @@
 
     <div class="comp-group">
       <div class="comp-group-title">
-        <span class="comp-group-badge prov">市级</span>
-      </div>
-      <div class="comp-group-items">
-        <div class="comp-row">
-          <span class="bul">·</span><span class="name">"中华魂"主题教育读书征文比赛</span><span class="rank">市级一等奖</span><span class="date">2025</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="comp-group">
-      <div class="comp-group-title">
         <span class="comp-group-badge prov">省级</span>
       </div>
       <div class="comp-group-items">
@@ -1013,6 +1016,17 @@
         </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">浙江省国际大学生创新大赛（2024）</span><span class="rank">省级二等奖</span><span class="date">2024/07</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <div class="comp-group-title">
+        <span class="comp-group-badge prov">市级</span>
+      </div>
+      <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">"中华魂"主题教育读书征文比赛</span><span class="rank">市级一等奖</span><span class="date">2025</span>
         </div>
       </div>
     </div>
@@ -1160,12 +1174,12 @@
     <h2 class="section-title">产品软素质与 AI 学习力</h2>
     <p class="section-desc">工具可以习得，素质决定上限——在跨学科迁移中持续进化。</p>
     <div class="soft-grid">
-      <div class="soft-card"><span class="soft-en">Proactivity</span><h4>主动性</h4><p>从中文系跨入互联网与 AI 领域，主动补齐产品、数据与技术技能栈；实习中主动发起知识库建设与运营看板搭建，而非等待安排。</p></div>
-      <div class="soft-card"><span class="soft-en">Execution</span><h4>执行力</h4><p>深度参与三个 Agent 项目从调研、设计到落地的完整闭环；在仟守独立完成从 0 到 1 的运营数据库与可视化看板。</p></div>
-      <div class="soft-card"><span class="soft-en">Judgment</span><h4>判断力</h4><p>习惯以数据说话：统一多平台数据口径、设计评分闸门与双模型校验机制，让决策有依据、质量有标准。</p></div>
-      <div class="soft-card"><span class="soft-en">Aesthetics</span><h4>审美力</h4><p>中文系与艺术创作的双重滋养，AI 短剧与音乐作品多次获国家级、国际奖项，兼顾产品功能与体验之美。</p></div>
-      <div class="soft-card"><span class="soft-en">Influence</span><h4>影响力</h4><p>作品全网播放 13.8W+；担任团支书、课程助教与学业助理，长期在组织协调中锤炼沟通与推动能力。</p></div>
-      <div class="soft-card"><span class="soft-en">Storytelling</span><h4>叙事力</h4><p>编剧与作词作曲的训练，让我擅长把复杂的数据与逻辑讲成清晰动人的故事——无论在复盘报告还是产品提案里。</p></div>
+      <div class="soft-card"><span class="soft-en">Proactivity</span><h4>主动性</h4></div>
+      <div class="soft-card"><span class="soft-en">Execution</span><h4>执行力</h4></div>
+      <div class="soft-card"><span class="soft-en">Judgment</span><h4>判断力</h4></div>
+      <div class="soft-card"><span class="soft-en">Aesthetics</span><h4>审美力</h4></div>
+      <div class="soft-card"><span class="soft-en">Influence</span><h4>影响力</h4></div>
+      <div class="soft-card"><span class="soft-en">Storytelling</span><h4>叙事力</h4></div>
     </div>
     <div class="ai-learn">
       <h3>AI 学习能力 · Learning how to learn</h3>
