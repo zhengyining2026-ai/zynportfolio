@@ -181,15 +181,16 @@
     .dial-seg:hover{border-color:var(--accent-light);color:#fff}
     .dial-seg.active{background:linear-gradient(135deg,var(--accent),#3a6fd8);border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(77,138,240,0.35)}
     .dial-seg.active b{opacity:1}
-    .exp-stage{width:100%;position:relative;padding-right:84px}
-    .exp-archive{position:absolute;top:0;left:0;right:84px;background:#f7f9fc;border:1px solid #e2e8f2;border-radius:var(--radius);overflow:hidden;transform-origin:center;transition:transform .55s cubic-bezier(.25,.8,.3,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease}
+    .exp-stage{width:100%;max-width:940px;margin:0 auto;position:relative;padding-right:120px}
+    .exp-archive{position:absolute;top:0;left:0;right:120px;background:#f7f9fc;border:1px solid #e2e8f2;border-radius:var(--radius);overflow:hidden;transform-origin:center;transition:transform .55s cubic-bezier(.25,.8,.3,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease}
     .exp-archive.pos-0{position:relative;right:auto;z-index:40;transform:none;opacity:1;filter:none;box-shadow:0 18px 44px rgba(0,0,0,0.45)}
-    .exp-archive.pos-1{z-index:30;transform:translateX(28px) scale(.975);opacity:.95;filter:brightness(.8);cursor:pointer}
-    .exp-archive.pos-2{z-index:20;transform:translateX(56px) scale(.95);opacity:.9;filter:brightness(.62);cursor:pointer}
-    .exp-archive.pos-3{z-index:10;transform:translateX(84px) scale(.925);opacity:.85;filter:brightness(.48);cursor:pointer}
-    .exp-archive .exp-company{color:#18213a}
-    .exp-archive .exp-role{color:#3a6fd8}
-    .exp-archive .exp-date{color:#6b7690}
+    .exp-archive.pos-1{z-index:30;transform:translateX(40px) scale(.97);opacity:.95;filter:brightness(.8);cursor:pointer}
+    .exp-archive.pos-2{z-index:20;transform:translateX(80px) scale(.94);opacity:.9;filter:brightness(.62);cursor:pointer}
+    .exp-archive.pos-3{z-index:10;transform:translateX(120px) scale(.91);opacity:.85;filter:brightness(.48);cursor:pointer}
+    .exp-archive .exp-header{background:linear-gradient(135deg,#3565cf,#274b9f)}
+    .exp-archive .exp-company{color:#fff}
+    .exp-archive .exp-role{color:#cfe0ff}
+    .exp-archive .exp-date{color:rgba(255,255,255,0.75)}
     .exp-archive .exp-body-inner{color:#3d465c}
     .exp-archive .exp-body-inner h4{color:#18213a}
     .exp-archive .exp-metric{background:rgba(58,111,216,0.08);border-color:rgba(58,111,216,0.25);color:#3a6fd8}
@@ -197,7 +198,7 @@
     .exp-archive .exp-header:hover .exp-toggle{background:var(--accent);border-color:var(--accent);color:#fff}
     .exp-visual{border-bottom:1px solid var(--border);background:#0d1119}
     .exp-visual{position:relative}
-    .exp-visual img{width:100%;height:240px;object-fit:cover;object-position:center;display:block;background:#e8edf5;transition:transform .5s ease}
+    .exp-visual img{width:100%;height:205px;object-fit:cover;object-position:center;display:block;background:#e8edf5;transition:transform .5s ease}
     .exp-num{position:absolute;top:12px;left:14px;z-index:2;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:#fff;background:rgba(10,14,22,0.75);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:0.28rem 0.7rem;backdrop-filter:blur(4px)}
     .exp-visual:hover img{transform:scale(1.02)}
     .exp-archive .exp-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
