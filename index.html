@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
   <title>郑奕宁 · 产品&amp;运营作品集</title>
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -342,6 +343,82 @@
       .comp-row .date,.comp-row .rank{align-self:flex-start}
       .practice-row{flex-direction:column;align-items:flex-start;gap:0.3rem}
     }
+
+    /* ========== 视觉升级 ========== */
+    /* 渐变光斑背景（缓慢漂移） */
+    body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+      background:
+        radial-gradient(620px 420px at 85% 8%, rgba(77,138,240,0.10), transparent 62%),
+        radial-gradient(520px 400px at 8% 42%, rgba(140,100,255,0.07), transparent 60%),
+        radial-gradient(580px 440px at 52% 96%, rgba(64,208,190,0.06), transparent 60%);
+      animation:auraFloat 14s ease-in-out infinite alternate}
+    @keyframes auraFloat{from{transform:translateY(-12px) scale(1)}to{transform:translateY(14px) scale(1.04)}}
+
+    /* 滚动淡入 */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* 区块标题增强 */
+    .section-title::after{content:'';display:block;width:56px;height:3px;margin:0.7rem auto 0;border-radius:2px;background:linear-gradient(90deg,var(--accent),transparent)}
+
+    /* 项目卡片堆叠（卡片夹效果） */
+    .rp-project-block{position:relative}
+    .rp-project-block::before,.rp-project-block::after{content:'';position:absolute;left:16px;right:16px;top:-10px;height:60px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(13,17,25,0.55);z-index:-1;transition:var(--transition)}
+    .rp-project-block::before{transform:rotate(-0.7deg)}
+    .rp-project-block::after{top:-5px;transform:rotate(0.5deg)}
+    .rp-project-block:hover::before{transform:rotate(-1.1deg) translateY(-3px)}
+    .rp-project-block:hover::after{transform:rotate(0.9deg) translateY(-2px)}
+
+    /* Welcome 照片画廊（无缝滚动） */
+    .photo-strip{overflow:hidden;border-radius:var(--radius);border:1px solid var(--border);background:var(--bg-card);padding:0.9rem 0;margin-top:2.25rem}
+    .photo-track{display:flex;gap:0.9rem;width:max-content;animation:marquee 46s linear infinite}
+    .photo-strip:hover .photo-track{animation-play-state:paused}
+    .photo-track img{height:150px;width:auto;border-radius:10px;border:1px solid var(--border);object-fit:cover;transition:var(--transition);filter:saturate(0.92)}
+    .photo-track img:hover{filter:none;transform:translateY(-4px) scale(1.03);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+    @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .photo-caption{text-align:center;font-size:0.72rem;color:var(--text-secondary);margin-top:0.8rem;letter-spacing:3px}
+
+    /* 产品软素质卡片 */
+    .soft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;max-width:980px;margin:0 auto}
+    .soft-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem 1.2rem;text-align:center;transition:var(--transition);position:relative;overflow:hidden}
+    .soft-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(77,138,240,0.09),transparent 55%);opacity:0;transition:var(--transition)}
+    .soft-card:hover{transform:translateY(-5px);border-color:var(--border-hover);box-shadow:0 14px 34px rgba(0,0,0,0.35)}
+    .soft-card:hover::before{opacity:1}
+    .soft-en{font-size:0.66rem;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase;font-weight:700}
+    .soft-card h4{font-size:0.95rem;color:#fff;margin:0.45rem 0 0.55rem}
+    .soft-card p{font-size:0.78rem;color:var(--text-secondary);line-height:1.75;text-align:left}
+    @media(max-width:760px){.soft-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.soft-grid{grid-template-columns:1fr}}
+
+    /* AI 学习能力条 */
+    .ai-learn{max-width:980px;margin:2.5rem auto 0;background:linear-gradient(135deg,rgba(77,138,240,0.10),rgba(64,208,190,0.06));border:1px solid var(--border);border-radius:var(--radius);padding:1.75rem}
+    .ai-learn h3{color:#fff;font-size:1rem;margin-bottom:0.9rem;text-align:center}
+    .ai-learn p.ai-desc{font-size:0.8rem;color:var(--text-secondary);line-height:1.8;max-width:720px;margin:0 auto 1rem;text-align:center}
+    .ai-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:0.6rem}
+    .ai-chip{font-size:0.78rem;color:var(--accent);background:rgba(77,138,240,0.10);border:1px solid rgba(77,138,240,0.35);border-radius:18px;padding:0.4rem 1rem;transition:var(--transition)}
+    .ai-chip:hover{background:var(--accent);color:#fff;transform:translateY(-2px)}
+
+    /* 工具箱行（模拟 logo 墙） */
+    .tools-row{display:flex;flex-wrap:wrap;justify-content:center;gap:0.75rem;margin-top:1.75rem}
+    .tool-chip{display:flex;align-items:center;gap:0.45rem;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:0.5rem 0.95rem;font-size:0.78rem;color:var(--text-secondary);transition:var(--transition)}
+    .tool-chip:hover{color:#fff;border-color:var(--accent);transform:translateY(-3px);box-shadow:0 8px 20px rgba(77,138,240,0.18)}
+    .tool-ico{width:22px;height:22px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:800;color:#fff;flex-shrink:0}
+
+    /* Contact 重设计 */
+    .contact-big{font-size:2.6rem;font-weight:800;color:#fff;text-align:center;letter-spacing:1px;line-height:1.35}
+    .contact-big span{background:linear-gradient(90deg,#8db8ff,#4d8af0,#40d0be);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .contact-cards{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;margin-top:2rem}
+    .c-card{display:flex;flex-direction:column;align-items:center;gap:0.35rem;padding:1.3rem 2.2rem;border-radius:var(--radius);background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);text-decoration:none;transition:var(--transition)}
+    .c-card:hover{transform:translateY(-4px);background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.28);box-shadow:0 14px 34px rgba(0,0,0,0.35)}
+    .c-ico{font-size:1.3rem}
+    .c-label{font-size:0.68rem;letter-spacing:2px;color:rgba(255,255,255,0.55)}
+    .c-val{font-size:0.85rem;color:#fff;font-weight:600}
+    .contact-section{position:relative;overflow:hidden}
+    .contact-section::before,.contact-section::after{content:'';position:absolute;width:4px;height:4px;border-radius:50%;background:#fff;opacity:0.4;
+      box-shadow:8vw 60px 0 -1px rgba(255,255,255,0.4),22vw -40px 0 0 rgba(255,255,255,0.3),34vw 140px 0 -1px rgba(255,255,255,0.35),48vw 30px 0 0 rgba(255,255,255,0.3),62vw 100px 0 -1px rgba(255,255,255,0.4),76vw -30px 0 0 rgba(255,255,255,0.3),88vw 160px 0 -1px rgba(255,255,255,0.35),96vw 80px 0 0 rgba(255,255,255,0.4);
+      animation:twinkle 4s ease-in-out infinite}
+    .contact-section::after{animation-delay:2s}
+    @keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:0.65}}
   </style>
 </head>
 <body>
@@ -385,6 +462,13 @@
     </div>
     <p class="hero-persona">ENFJ × 处女座<br>关怀世界 · 追求极致 · 步履不停</p>
     <button class="hero-cta" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">了解更多 ↓</button>
+    <div class="photo-strip">
+      <div class="photo-track">
+        <img src="photos/img-3045.png" alt="生活剪影"><img src="photos/img-3046.png" alt="生活剪影"><img src="photos/img-3047.png" alt="生活剪影"><img src="photos/img-3048.png" alt="生活剪影"><img src="photos/img-3049.png" alt="生活剪影"><img src="photos/img-3050.png" alt="生活剪影"><img src="photos/img-3051.png" alt="生活剪影"><img src="photos/img-3052.png" alt="生活剪影"><img src="photos/img-3053.png" alt="生活剪影"><img src="photos/img-3054.png" alt="生活剪影"><img src="photos/img-3055.png" alt="生活剪影"><img src="photos/img-3056.png" alt="生活剪影"><img src="photos/img-3057.png" alt="生活剪影">
+        <img src="photos/img-3045.png" alt=""><img src="photos/img-3046.png" alt=""><img src="photos/img-3047.png" alt=""><img src="photos/img-3048.png" alt=""><img src="photos/img-3049.png" alt=""><img src="photos/img-3050.png" alt=""><img src="photos/img-3051.png" alt=""><img src="photos/img-3052.png" alt=""><img src="photos/img-3053.png" alt=""><img src="photos/img-3054.png" alt=""><img src="photos/img-3055.png" alt=""><img src="photos/img-3056.png" alt=""><img src="photos/img-3057.png" alt="">
+      </div>
+    </div>
+    <p class="photo-caption">LIFE & CAMPUS · 生活与校园剪影</p>
   </section>
 
   <!-- ====== Education ====== -->
@@ -591,7 +675,7 @@
     <!-- ====== 全媒体内容运营工作台 ====== -->
     <div class="rp-project-block rp-featured">
       <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:600;text-align:center;margin-bottom:0.5rem">Vibe Coding <span class="rp-badge">重点推荐</span></p>
-      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">越迁科技 · 全媒体内容运营工作台</h3>
+      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">越迁科技 · AI 新媒体与广告运营工作台</h3>
 
       <h3 class="rp-section-header">设计初衷</h3>
       <div class="rp-intro">
@@ -981,27 +1065,27 @@
       <div class="practice-row">
         <span class="practice-role">团支书</span>
         <span class="practice-org">重庆大学 · 高研院25级研究生</span>
-        <span class="practice-date">2025.09 — 2026.06</span>
+        <span class="practice-date">2025.09 — 至今</span>
       </div>
       <div class="practice-row">
-        <span class="practice-role">党支部委员</span>
+        <span class="practice-role">党支部组织委员</span>
         <span class="practice-org">重庆大学 · 高研院</span>
-        <span class="practice-date">2025.09 — 2026.06</span>
+        <span class="practice-date">2026.09 — 至今</span>
       </div>
       <div class="practice-row">
         <span class="practice-role">实践部干事</span>
         <span class="practice-org">重庆大学 · 高研院团委</span>
-        <span class="practice-date">2025.09 — 2026.06</span>
+        <span class="practice-date">2025—2026 学年</span>
       </div>
       <div class="practice-row">
         <span class="practice-role">学业助理</span>
         <span class="practice-org">重庆大学 · 高研院</span>
-        <span class="practice-date">2025.09 — 2026.06</span>
+        <span class="practice-date">2025—2026 学年</span>
       </div>
       <div class="practice-row">
         <span class="practice-role">课程助教（文明经典 · 文化研究）</span>
         <span class="practice-org">重庆大学</span>
-        <span class="practice-date">2025.09 — 2026.06</span>
+        <span class="practice-date">2025—2026 学年</span>
       </div>
       <div class="practice-row">
         <span class="practice-role">团支书</span>
@@ -1070,6 +1154,34 @@
     </div>
   </section>
 
+  <!-- ====== Soft Skills & AI ====== -->
+  <section class="section">
+    <p class="section-label">Soft Skills & AI</p>
+    <h2 class="section-title">产品软素质与 AI 学习力</h2>
+    <p class="section-desc">工具可以习得，素质决定上限——在跨学科迁移中持续进化。</p>
+    <div class="soft-grid">
+      <div class="soft-card"><span class="soft-en">Proactivity</span><h4>主动性</h4><p>从中文系跨入互联网与 AI 领域，主动补齐产品、数据与技术技能栈；实习中主动发起知识库建设与运营看板搭建，而非等待安排。</p></div>
+      <div class="soft-card"><span class="soft-en">Execution</span><h4>执行力</h4><p>深度参与三个 Agent 项目从调研、设计到落地的完整闭环；在仟守独立完成从 0 到 1 的运营数据库与可视化看板。</p></div>
+      <div class="soft-card"><span class="soft-en">Judgment</span><h4>判断力</h4><p>习惯以数据说话：统一多平台数据口径、设计评分闸门与双模型校验机制，让决策有依据、质量有标准。</p></div>
+      <div class="soft-card"><span class="soft-en">Aesthetics</span><h4>审美力</h4><p>中文系与艺术创作的双重滋养，AI 短剧与音乐作品多次获国家级、国际奖项，兼顾产品功能与体验之美。</p></div>
+      <div class="soft-card"><span class="soft-en">Influence</span><h4>影响力</h4><p>作品全网播放 13.8W+；担任团支书、课程助教与学业助理，长期在组织协调中锤炼沟通与推动能力。</p></div>
+      <div class="soft-card"><span class="soft-en">Storytelling</span><h4>叙事力</h4><p>编剧与作词作曲的训练，让我擅长把复杂的数据与逻辑讲成清晰动人的故事——无论在复盘报告还是产品提案里。</p></div>
+    </div>
+    <div class="ai-learn">
+      <h3>AI 学习能力 · Learning how to learn</h3>
+      <p class="ai-desc">AI 时代，我以此刻的知识储备为起点，更看重持续学习与快速迭代的能力。</p>
+      <div class="ai-chips">
+        <span class="ai-chip">长期深度使用 Claude / GPT</span>
+        <span class="ai-chip">Vibe Coding 全栈开发</span>
+        <span class="ai-chip">Prompt 工程</span>
+        <span class="ai-chip">Skill 编排</span>
+        <span class="ai-chip">Agent 工作流设计</span>
+        <span class="ai-chip">双模型对比评测</span>
+        <span class="ai-chip">持续跟踪 AI 产品动态</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== Skills ====== -->
   <section class="section">
     <p class="section-label">Skills</p>
@@ -1112,6 +1224,21 @@
         </div>
       </div>
     </div>
+    <div class="tools-row">
+      <span class="tool-chip"><span class="tool-ico" style="background:#a259ff">Fg</span>Figma</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#18a0fb">Ax</span>Axure</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#ea4a35">Xm</span>XMind</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#31a8ff">Ps</span>Photoshop</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#9999ff">Pr</span>Premiere</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#22d3ee">剪</span>剪映</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#217346">Ex</span>Excel</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#336791">Q</span>SQL</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#3776ab">Py</span>Python</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#d97757">C</span>Claude</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#10a37f">G</span>GPT</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#4d8af0">CB</span>CodeBuddy</span>
+      <span class="tool-chip"><span class="tool-ico" style="background:#6b7280">No</span>Notion</span>
+    </div>
   </section>
 
   <!-- ====== Self Evaluation ====== -->
@@ -1129,14 +1256,18 @@
   <!-- ====== Contact ====== -->
   <section class="contact-section" id="contact">
     <p class="section-label">Contact</p>
-    <h2 class="section-title">期待与你合作</h2>
-    <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto;font-size:0.92rem">寻找产品运营 / 产品经理 / 运营类实习机会，欢迎随时联系交流</p>
-    <div class="contact-info">
-      <a href="mailto:zhengyining919@163.com" class="contact-item">
-        <span>✉️ zhengyining919@163.com</span>
+    <h2 class="contact-big">下一站，<span>一起创造。</span></h2>
+    <p style="color:rgba(255,255,255,0.65);max-width:520px;margin:0.9rem auto 0;font-size:0.92rem">寻找产品运营 / 产品经理 / 运营增长 / AI 相关方向实习机会，欢迎随时联系交流</p>
+    <div class="contact-cards">
+      <a href="mailto:zhengyining919@163.com" class="c-card">
+        <span class="c-ico">✉️</span>
+        <span class="c-label">邮箱</span>
+        <span class="c-val">zhengyining919@163.com</span>
       </a>
-      <a href="tel:15057017446" class="contact-item">
-        <span>📞 15057017446</span>
+      <a href="tel:15057017446" class="c-card">
+        <span class="c-ico">📞</span>
+        <span class="c-label">电话</span>
+        <span class="c-val">15057017446</span>
       </a>
     </div>
     <p class="contact-note">Per aspera ad astra<br>循此苦旅，终抵繁星</p>
@@ -1149,6 +1280,9 @@
   </footer>
 
   <script>
+    // 滚动淡入动效
+    const revealIO = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } }), { threshold: 0.08 });
+    document.querySelectorAll('.section, .rp-project-block, .exp-card, .skill-card, .soft-card, .work-feature, .ai-learn').forEach(el => { el.classList.add('reveal'); revealIO.observe(el); });
     function toggleExp(header){header.parentElement.classList.toggle('open')}
     const navLinks=document.querySelectorAll('.nav-links a');
     const sections=[];
