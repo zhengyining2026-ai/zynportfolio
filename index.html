@@ -464,6 +464,10 @@
     .ep-years{font-size:0.68rem;color:var(--accent);letter-spacing:1px}
     .ep-name{font-size:1rem;font-weight:700;color:#fff;margin:0.25rem 0}
     .ep-tag{font-size:0.75rem;color:var(--text-secondary)}
+    .ep-tag em{color:var(--accent);font-style:normal;font-weight:600}
+    .ep-badge{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.4);z-index:3}
+    .ep-detail{margin-top:0.65rem;border-top:1px solid var(--border);padding-top:0.65rem}
+    .ep-detail p{font-size:0.75rem;color:var(--text-secondary);line-height:1.75;margin-bottom:0.35rem}
     @media(max-width:760px){.edu-cards{grid-template-columns:1fr}}
 
     /* 微信二维码卡（悬停弹出二维码） */
@@ -536,63 +540,26 @@
     <!-- 学习坐标 -->
     <div class="edu-cards">
       <div class="edu-photo-card">
-        <div class="ep-img ep-cqu"><span>🎓</span><img src="photos/cqu.jpg" alt="重庆大学" onerror="this.remove()"></div>
+        <div class="ep-img ep-cqu"><img src="photos/cqu.jpg" alt="重庆大学" onerror="this.remove()"><span class="ep-badge">硕</span></div>
         <div class="ep-info">
-          <p class="ep-years">2025.09 — 至今</p>
+          <p class="ep-years">2025.09 — 至今 · 2028届</p>
           <p class="ep-name">重庆大学</p>
-          <p class="ep-tag">硕士研究生 · 中国语言文学</p>
+          <p class="ep-tag">硕士研究生 · 中国语言文学 <em>· 推免</em></p>
+          <div class="ep-detail">
+            <p>学年均绩 93 分，年级排名第 1；连续两学年获校一等奖学金，获校优秀学生干部、三好学生等综合荣誉</p>
+            <p>研究方向：文艺学 —— 新媒介文艺、数字人文与青年亚文化（微短剧平台、陪伴式 AIGC 情感与伦理）</p>
+          </div>
         </div>
       </div>
       <div class="edu-photo-card">
-        <div class="ep-img ep-hznu"><span>🎓</span><img src="photos/hznu.jpg" alt="杭州师范大学" onerror="this.remove()"></div>
+        <div class="ep-img ep-hznu"><img src="photos/hznu.jpg" alt="杭州师范大学" onerror="this.remove()"><span class="ep-badge">本</span></div>
         <div class="ep-info">
           <p class="ep-years">2021.09 — 2025.06</p>
           <p class="ep-name">杭州师范大学</p>
-          <p class="ep-tag">本科 · 中国语言文学</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="edu-timeline">
-      <!-- 硕士 -->
-      <div class="edu-node current">
-        <div class="edu-dot">硕</div>
-        <div class="edu-card" onclick="this.parentElement.classList.toggle('open')">
-          <div class="edu-card-top">
-            <div>
-              <h4>中国语言文学 硕士 <span class="edu-degree">· 推免</span></h4>
-              <div class="edu-school">重庆大学 · 人文社会科学高等研究院</div>
-              <div class="edu-date">2025.09 — 至今（2028届）</div>
-            </div>
-            <span class="edu-card-arrow">▾</span>
-          </div>
-          <div class="edu-card-body">
-            <div class="edu-card-body-inner">
-              学年均绩 93 分，年级排名第 1 名；连续两学年获校一等奖学金、重庆市征文比赛一等奖。<br>
-              担任班级团支书、党支部委员、院团委干事，获校优秀学生干部、三好学生等综合荣誉。<br>
-              研究方向为文艺学：新媒介文艺、数字人文与青年亚文化研究（微短剧平台、陪伴式 AIGC 情感与伦理等）。
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- 本科 -->
-      <div class="edu-node">
-        <div class="edu-dot">本</div>
-        <div class="edu-card" onclick="this.parentElement.classList.toggle('open')">
-          <div class="edu-card-top">
-            <div>
-              <h4>中国语言文学 学士 <span class="edu-degree">· 排名 1/41，专业年级前 2%</span></h4>
-              <div class="edu-school">杭州师范大学 · 人文学院</div>
-              <div class="edu-date">2021.09 — 2025.06</div>
-            </div>
-            <span class="edu-card-arrow">▾</span>
-          </div>
-          <div class="edu-card-body">
-            <div class="edu-card-body-inner">
-              GPA 4.16/5 · 班级排名 1/41 · 专业年级前 2% · 获推荐免试研究生资格<br>
-              连续三年获浙江省政府奖学金、校一等奖学金<br>
-              获评浙江省优秀毕业生、校优秀学生干部、优秀共青团干部、亚运会服务保障优秀志愿者
-            </div>
+          <p class="ep-tag">本科 · 中国语言文学 <em>· 专业第一（排名 1/41）</em></p>
+          <div class="ep-detail">
+            <p>GPA 4.16/5 · 专业年级前 2% · 获推荐免试研究生资格；连续三年获浙江省政府奖学金、校一等奖学金</p>
+            <p>获评浙江省优秀毕业生、校优秀学生干部、优秀共青团干部、亚运会服务保障优秀志愿者</p>
           </div>
         </div>
       </div>
