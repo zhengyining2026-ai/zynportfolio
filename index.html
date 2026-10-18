@@ -696,7 +696,7 @@
         </div>
         <div class="exp-body">
           <div class="exp-body-inner">
-            <h4>项目一 · AI 新媒体与广告运营工作台（基于 GPT）</h4>
+            <h4>项目一 · AI 新媒体与广告运营工作台</h4>
             <ul>
               <li><b>AI 工作流设计：</b>围绕海内外互联网金融竞品及传播渠道，搭建"竞品监测—内容生产—广告投放—数据复盘"闭环的 AI 运营工作台</li>
               <li><b>知识库建设：</b>为工作台搭建企业内部知识库，收录美团等六大平台的审核规则、获客机制与运营策略文档，构建"文档管理 + 向量检索 + 关键词检索 + 引用追踪"结构：将 Markdown、TXT、DOCX 等资料解析并按标题、章节与内容切分为知识片段，经真实或 Mock Embedding 转为向量存入 PostgreSQL/pgvector；查询时同时执行语义检索与关键词匹配，经 RRF 融合排序返回最相关资料供 AI 生成引用，并记录文档版本、章节与引用用途，实现知识来源可追溯</li>
@@ -1425,14 +1425,16 @@
       expOrder.forEach((idx,pos) => archives[idx].classList.add('pos-'+pos));
       dialSegs.forEach((s,k) => s.classList.toggle('active', k === expOrder[0]));
     }
+    function collapseAll(){ archives.forEach(a => a.classList.remove('open')); }
     function bringToFront(i){
       const p = expOrder.indexOf(i);
       if(p <= 0) return;
+      collapseAll();
       expOrder = [i, ...expOrder.slice(0,p), ...expOrder.slice(p+1)];
       layoutDeck();
     }
-    function nextCard(){ expOrder.push(expOrder.shift()); layoutDeck(); }
-    function prevCard(){ expOrder.unshift(expOrder.pop()); layoutDeck(); }
+    function nextCard(){ collapseAll(); expOrder.push(expOrder.shift()); layoutDeck(); }
+    function prevCard(){ collapseAll(); expOrder.unshift(expOrder.pop()); layoutDeck(); }
     dialSegs.forEach(s => s.addEventListener('click', () => bringToFront(+s.dataset.idx)));
     archives.forEach(a => a.addEventListener('click', () => {
       if(!a.classList.contains('pos-0')) bringToFront(+a.dataset.idx);
