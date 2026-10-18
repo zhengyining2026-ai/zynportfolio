@@ -520,6 +520,10 @@
     /* 作品卡内获奖展示 */
     .proj-awards{margin-top:1.4rem;border-top:1px solid var(--border);padding-top:1.4rem}
     .pa-poster{border-radius:12px;overflow:hidden;border:2px solid var(--border)}
+    .proj-works{margin-top:0.75rem;display:flex;flex-direction:column;gap:0.55rem}
+    .pw-row{display:flex;gap:0.7rem;align-items:flex-start;font-size:0.83rem;line-height:1.7;color:var(--text-secondary);background:rgba(255,255,255,0.05);border:2px solid var(--border);border-radius:10px;padding:0.6rem 0.85rem;transition:var(--transition)}
+    .pw-row:hover{background:rgba(255,255,255,0.09);border-color:var(--border-hover)}
+    .pw-name{flex:0 0 auto;font-weight:700;color:var(--accent-light)}
     .pa-poster img{width:100%;display:block}
     .pa-certs{display:grid;grid-template-columns:repeat(3,minmax(0,250px));justify-content:center;gap:1.1rem;margin-top:1.2rem}
     .pa-cert{display:block;border-radius:10px;overflow:hidden;border:2px solid var(--border);transition:transform .35s ease,border-color .35s ease}
@@ -1028,6 +1032,10 @@
         <p><em style="color:var(--accent-light);font-weight:600;">项目背景：</em>母亲节公益主题 AI 短剧，以重庆女性挑山工为真实创作背景，聚焦该群体在历史与生活中承担的责任与价值，通过 AIGC 技术打造公益短篇，传递人文关怀。</p>
         <p><em style="color:var(--accent-light);font-weight:600;">我的职责：</em>作为核心团队成员，全程参与项目开发制作；独立负责情节剧本指导与设计、AI 原创歌词及歌曲创作，把控故事叙事与音乐内容方向。</p>
         <p><em style="color:var(--accent-light);font-weight:600;">项目成果：</em>作品全网传播效果优异，单平台播放量 13.8W+；凭借创意与公益价值，荣获网易有道 AIGC 视频创想大赛三等奖。</p>
+        <div class="proj-works">
+          <div class="pw-row"><span class="pw-name">《大约一万趟》</span><span class="pw-desc">入围 2026 首尔国际 AI 电影节，获第二十届中国好创意国赛三等奖、网易有道 AIGC 视频创想大赛国赛三等奖、可灵 AI NextGen 高校 AIGC 创作大赛灵感新锐奖</span></div>
+          <div class="pw-row"><span class="pw-name">《挑着光》</span><span class="pw-desc">获 2026 爱奇艺音乐创作大赛第三期二等奖，入围大学生 AI 艺术季 AI 歌曲创作单元</span></div>
+        </div>
         <div class="proj-awards">
           <div class="pa-poster"><img src="works/dz1w-poster.jpg" alt="《大约一万趟》海报"></div>
           <div class="pa-certs">
