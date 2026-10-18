@@ -432,6 +432,25 @@
     .exp-list .exp-card:nth-child(2),.soft-grid .soft-card:nth-child(2),.skills-grid .skill-card:nth-child(2){transition-delay:.1s}
     .exp-list .exp-card:nth-child(3),.soft-grid .soft-card:nth-child(3),.skills-grid .skill-card:nth-child(3){transition-delay:.2s}
     .exp-list .exp-card:nth-child(4),.soft-grid .soft-card:nth-child(4),.skills-grid .skill-card:nth-child(4){transition-delay:.3s}
+
+    /* 学习坐标双卡 */
+    .edu-cards{display:grid;grid-template-columns:repeat(2,minmax(0,330px));justify-content:center;gap:1.25rem;margin-bottom:2.5rem}
+    .edu-photo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+    .edu-photo-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 14px 34px rgba(0,0,0,0.35)}
+    .ep-img{position:relative;height:150px;display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+    .ep-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+    .ep-cqu{background:linear-gradient(135deg,rgba(77,138,240,0.25),rgba(140,100,255,0.15))}
+    .ep-hznu{background:linear-gradient(135deg,rgba(64,208,190,0.22),rgba(77,138,240,0.12))}
+    .ep-info{padding:0.9rem 1.1rem}
+    .ep-years{font-size:0.68rem;color:var(--accent);letter-spacing:1px}
+    .ep-name{font-size:1rem;font-weight:700;color:#fff;margin:0.25rem 0}
+    .ep-tag{font-size:0.75rem;color:var(--text-secondary)}
+    @media(max-width:760px){.edu-cards{grid-template-columns:1fr}}
+
+    /* 微信二维码卡（悬停弹出二维码） */
+    .wechat-card{position:relative;cursor:default}
+    .wechat-qr{display:none;position:absolute;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%);width:150px;border-radius:12px;border:1px solid var(--border);box-shadow:0 14px 34px rgba(0,0,0,0.5);z-index:5}
+    .wechat-card:hover .wechat-qr{display:block}
   </style>
 </head>
 <body>
@@ -476,7 +495,7 @@
     <p class="hero-persona">ENFJ × 处女座<br>关怀世界 · 追求极致 · 步履不停</p>
     <button class="hero-cta" onclick="document.getElementById('education').scrollIntoView({behavior:'smooth'})">了解更多 ↓</button>
     <div class="hero-photo">
-      <img src="photos/me.png" alt="郑奕宁" onerror="this.remove()">
+      <img src="photos/me.jpg" alt="郑奕宁" onerror="this.remove()">
       <div class="hero-photo-card">
         <p class="hp-name">郑奕宁</p>
         <p class="hp-en">ZHENG YINING</p>
@@ -490,6 +509,27 @@
     <p class="section-label">Education</p>
     <h2 class="section-title">教育背景</h2>
     <p class="section-desc">热爱指引，无问西东。</p>
+
+    <!-- 学习坐标 -->
+    <div class="edu-cards">
+      <div class="edu-photo-card">
+        <div class="ep-img ep-cqu"><span>🎓</span><img src="photos/cqu.jpg" alt="重庆大学" onerror="this.remove()"></div>
+        <div class="ep-info">
+          <p class="ep-years">2025.09 — 至今</p>
+          <p class="ep-name">重庆大学</p>
+          <p class="ep-tag">硕士研究生 · 中国语言文学</p>
+        </div>
+      </div>
+      <div class="edu-photo-card">
+        <div class="ep-img ep-hznu"><span>🎓</span><img src="photos/hznu.jpg" alt="杭州师范大学" onerror="this.remove()"></div>
+        <div class="ep-info">
+          <p class="ep-years">2021.09 — 2025.06</p>
+          <p class="ep-name">杭州师范大学</p>
+          <p class="ep-tag">本科 · 中国语言文学</p>
+        </div>
+      </div>
+    </div>
+
     <div class="edu-timeline">
       <!-- 硕士 -->
       <div class="edu-node current">
@@ -1283,6 +1323,12 @@
         <span class="c-label">电话</span>
         <span class="c-val">15057017446</span>
       </a>
+      <span class="c-card wechat-card">
+        <span class="c-ico">💬</span>
+        <span class="c-label">微信</span>
+        <span class="c-val">扫码添加</span>
+        <img class="wechat-qr" src="photos/wechat.jpg" alt="微信二维码" onerror="this.remove()">
+      </span>
     </div>
     <p class="contact-note">Per aspera ad astra<br>循此苦旅，终抵繁星</p>
   </section>
