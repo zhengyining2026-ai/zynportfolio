@@ -173,34 +173,38 @@
     .exp-card.open .exp-toggle .arrow{transform:rotate(180deg)}
     .exp-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease,padding 0.3s ease}
     .exp-card.open .exp-body{max-height:1400px}
-    /* 实习档案轮播 */
-    .exp-gallery{display:flex;gap:1.5rem;align-items:flex-start;margin-top:1.25rem}
-    .exp-dial{flex:0 0 130px;position:sticky;top:100px}
-    .exp-dial svg{width:100%;display:block}
-    .dial-core{fill:var(--bg-card);stroke:var(--border);stroke-width:1}
-    .dial-seg{fill:none;stroke:var(--border);stroke-width:7;stroke-linecap:round;cursor:pointer;transition:stroke .3s}
-    .dial-seg:hover{stroke:var(--accent-light)}
-    .dial-seg.active{stroke:var(--accent)}
-    .dial-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.62rem;color:var(--text-secondary);text-align:center;font-weight:600;letter-spacing:1px}
-    .dial-label span{display:block;font-size:1.05rem;color:#fff;letter-spacing:0}
-    .exp-stage{flex:1;min-width:0;position:relative;padding-top:74px}
-    .exp-archive{position:absolute;top:74px;left:0;right:0;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transform-origin:top center;transition:transform .55s cubic-bezier(.25,.8,.3,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease}
-    .exp-archive.pos-0{position:relative;top:0;z-index:40;transform:none;opacity:1;filter:none;box-shadow:0 18px 44px rgba(0,0,0,0.4)}
-    .exp-archive.pos-1{z-index:30;transform:scale(.965) translateY(-24px);opacity:.95;filter:brightness(.72);cursor:pointer}
-    .exp-archive.pos-2{z-index:20;transform:scale(.93) translateY(-48px);opacity:.9;filter:brightness(.55);cursor:pointer}
-    .exp-archive.pos-3{z-index:10;transform:scale(.9) translateY(-72px);opacity:.85;filter:brightness(.45);cursor:pointer}
+    /* 实习档案横向导航 + 左右叠卡 */
+    .exp-gallery{display:flex;flex-direction:column;gap:1.4rem;margin-top:1.25rem}
+    .exp-dial{display:flex;gap:0.6rem;position:sticky;top:74px;z-index:60}
+    .dial-seg{flex:1;display:flex;align-items:center;justify-content:center;gap:0.5rem;height:50px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card);color:var(--text-secondary);font-size:0.85rem;cursor:pointer;transition:all .3s ease;white-space:nowrap;overflow:hidden}
+    .dial-seg b{font-weight:800;font-size:0.72rem;letter-spacing:1px;opacity:0.65}
+    .dial-seg:hover{border-color:var(--accent-light);color:#fff}
+    .dial-seg.active{background:linear-gradient(135deg,var(--accent),#3a6fd8);border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(77,138,240,0.35)}
+    .dial-seg.active b{opacity:1}
+    .exp-stage{width:100%;position:relative;padding-right:84px}
+    .exp-archive{position:absolute;top:0;left:0;right:84px;background:#f7f9fc;border:1px solid #e2e8f2;border-radius:var(--radius);overflow:hidden;transform-origin:center;transition:transform .55s cubic-bezier(.25,.8,.3,1),opacity .45s ease,filter .45s ease,box-shadow .45s ease}
+    .exp-archive.pos-0{position:relative;right:auto;z-index:40;transform:none;opacity:1;filter:none;box-shadow:0 18px 44px rgba(0,0,0,0.45)}
+    .exp-archive.pos-1{z-index:30;transform:translateX(28px) scale(.975);opacity:.95;filter:brightness(.8);cursor:pointer}
+    .exp-archive.pos-2{z-index:20;transform:translateX(56px) scale(.95);opacity:.9;filter:brightness(.62);cursor:pointer}
+    .exp-archive.pos-3{z-index:10;transform:translateX(84px) scale(.925);opacity:.85;filter:brightness(.48);cursor:pointer}
+    .exp-archive .exp-company{color:#18213a}
+    .exp-archive .exp-role{color:#3a6fd8}
+    .exp-archive .exp-date{color:#6b7690}
+    .exp-archive .exp-body-inner{color:#3d465c}
+    .exp-archive .exp-body-inner h4{color:#18213a}
+    .exp-archive .exp-metric{background:rgba(58,111,216,0.08);border-color:rgba(58,111,216,0.25);color:#3a6fd8}
     .exp-archive .exp-toggle{background:rgba(77,138,240,0.14);border-color:rgba(77,138,240,0.45);color:var(--accent-light);font-weight:600}
     .exp-archive .exp-header:hover .exp-toggle{background:var(--accent);border-color:var(--accent);color:#fff}
     .exp-visual{border-bottom:1px solid var(--border);background:#0d1119}
     .exp-visual{position:relative}
-    .exp-visual img{width:100%;height:240px;object-fit:contain;object-position:center;display:block;background:#0d1119;transition:transform .5s ease}
+    .exp-visual img{width:100%;height:240px;object-fit:cover;object-position:center;display:block;background:#e8edf5;transition:transform .5s ease}
     .exp-num{position:absolute;top:12px;left:14px;z-index:2;font-size:0.75rem;font-weight:700;letter-spacing:2px;color:#fff;background:rgba(10,14,22,0.75);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:0.28rem 0.7rem;backdrop-filter:blur(4px)}
     .exp-visual:hover img{transform:scale(1.02)}
     .exp-archive .exp-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
     .exp-archive.open .exp-body{max-height:1600px}
     .exp-archive.open .exp-toggle{background:var(--accent);border-color:var(--accent);color:#fff}
     .exp-archive.open .exp-toggle .arrow{transform:rotate(180deg)}
-    @media(max-width:760px){.exp-gallery{flex-direction:column;align-items:center}.exp-dial{position:static;flex:none;width:96px}.exp-visual img{height:200px}}
+    @media(max-width:760px){.exp-dial{position:static;flex-wrap:wrap}.dial-seg{min-width:calc(50% - 0.3rem)}.exp-stage{padding-right:0}.exp-archive{right:0}.exp-archive.pos-1,.exp-archive.pos-2,.exp-archive.pos-3{transform:translateY(14px) scale(.98)}.exp-visual img{height:200px}}
     .exp-body-inner{padding:0 1.75rem 1.75rem;border-top:1px solid var(--border)}
     .exp-body-inner h4{font-size:0.85rem;color:var(--accent-light);font-weight:600;margin:1.25rem 0 0.5rem}
     .exp-body-inner ul{list-style:none;padding:0}
@@ -613,17 +617,12 @@
     <h2 class="section-title">实习经历</h2>
     <p class="section-desc">在多元角色中锤炼产品与运营思维。</p>
     <div class="exp-gallery">
-      <!-- 四段导航盘 -->
+      <!-- 横向导航条 01-04 -->
       <div class="exp-dial">
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="26" class="dial-core"></circle>
-          <circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.09)" stroke-width="7"></circle>
-          <path class="dial-seg active" data-idx="0" d="M80.6,24.3 A40,40 0 0 1 80.6,75.7"></path>
-          <path class="dial-seg" data-idx="1" d="M75.7,80.6 A40,40 0 0 1 24.3,80.6"></path>
-          <path class="dial-seg" data-idx="2" d="M19.4,75.7 A40,40 0 0 1 19.4,24.3"></path>
-          <path class="dial-seg" data-idx="3" d="M24.3,19.4 A40,40 0 0 1 80.6,19.4"></path>
-        </svg>
-        <div class="dial-label"><span id="dialNum">01</span>/ 04</div>
+        <div class="dial-seg active" data-idx="0"><b>01</b>越迁科技</div>
+        <div class="dial-seg" data-idx="1"><b>02</b>仟守文化</div>
+        <div class="dial-seg" data-idx="2"><b>03</b>字节跳动</div>
+        <div class="dial-seg" data-idx="3"><b>04</b>中科创新</div>
       </div>
       <div class="exp-stage" id="expStage">
       <!-- 越迁科技 -->
@@ -1397,13 +1396,11 @@
     // 实习档案叠卡：点击/滚动置顶
     const archives = document.querySelectorAll('.exp-archive');
     const dialSegs = document.querySelectorAll('.dial-seg');
-    const dialNum = document.getElementById('dialNum');
     const expDeck = document.getElementById('expStage');
     let expOrder = [0,1,2,3];
     function layoutDeck(){
       archives.forEach(a => a.classList.remove('pos-0','pos-1','pos-2','pos-3'));
       expOrder.forEach((idx,pos) => archives[idx].classList.add('pos-'+pos));
-      dialNum.textContent = String(expOrder[0]+1).padStart(2,'0');
       dialSegs.forEach((s,k) => s.classList.toggle('active', k === expOrder[0]));
     }
     function bringToFront(i){
