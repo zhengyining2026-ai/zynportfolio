@@ -279,6 +279,20 @@
     /* 重点项目：更醒目的边框与徽章 */
     .rp-featured{border-left-width:5px;box-shadow:0 0 0 1px rgba(77,138,240,0.18),0 18px 40px rgba(77,138,240,0.10)}
     .rp-badge{display:inline-block;margin-left:0.5rem;padding:2px 10px;border-radius:10px;background:var(--accent);color:#fff;font-size:0.62rem;letter-spacing:1px;font-weight:600;vertical-align:middle}
+    /* AI 作品重点展示 */
+    .work-feature{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;margin-bottom:1.5rem}
+    .work-top{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
+    .work-poster{flex:0 0 280px;max-width:100%}
+    .work-poster img{width:100%;display:block;border-radius:var(--radius-sm)}
+    .work-info{flex:1;min-width:260px}
+    .work-info h3{color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:0.35rem}
+    .work-en{font-size:0.75rem;color:var(--text-secondary);font-weight:400;margin-left:0.4rem}
+    .work-role{color:var(--accent);font-size:0.78rem;margin-bottom:0.5rem}
+    .work-desc{color:var(--text-secondary);font-size:0.82rem;line-height:1.7;margin-bottom:0.75rem}
+    .work-link{display:inline-block;font-size:0.78rem;color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:20px;padding:0.3rem 0.9rem;transition:var(--transition)}
+    .work-link:hover{border-color:var(--accent);background:rgba(77,138,240,0.08)}
+    .work-certs{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.25rem}
+    @media(max-width:760px){.work-poster{flex:1 1 100%}.work-certs{grid-template-columns:1fr}}
 
     /* ========== Self Eval ========== */
     .eval-text{max-width:680px;margin:0 auto;padding:2rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
@@ -817,13 +831,48 @@
   <section class="section" id="competition">
     <p class="section-label">Competition</p>
     <h2 class="section-title">竞赛荣誉</h2>
-    <p class="section-desc">从诗词讲解到市场调研，从计算机设计到创新大赛——文理兼修、跨界突围。</p>
+    <p class="section-desc">从诗词讲解到市场调研，从计算机设计到 AI 创作——文理兼修、跨界突围。</p>
+
+    <!-- AI 作品重点展示 -->
+    <div class="work-feature">
+      <div class="work-top">
+        <div class="work-poster"><img src="works/dz1w-poster.jpg" alt="《大约一万趟》海报"></div>
+        <div class="work-info">
+          <h3>AI 短剧《大约一万趟》 <span class="work-en">Roughly Ten Thousand Journeys</span></h3>
+          <p class="work-role">担任编剧 · 主题曲 MV 作词 / 作曲</p>
+          <p class="work-desc">作品获中国好创意暨全国数字艺术设计大赛全国三等奖、网易有道 AIGC 视频创想大赛全国三等奖，入围首尔国际 AI 电影节，获可灵 AI NextGen 高校 AIGC 创作大赛灵感新锐奖，单平台播放量 13.8W+。</p>
+          <a class="work-link" href="https://klingai.com/app/activity-zone/brand-activity?id=862459762066743329" target="_blank" rel="noopener">🔗 查看可灵 AI 获奖公示 <span>↗</span></a>
+        </div>
+      </div>
+      <div class="work-certs">
+        <a class="wb-shot" href="works/ccs-cert.jpg" target="_blank"><img src="works/ccs-cert.jpg" alt="中国好创意获奖证书"><span class="wb-shot-cap">中国好创意暨全国数字艺术设计大赛 · 全国三等奖证书</span></a>
+        <a class="wb-shot" href="works/kling-award.jpg" target="_blank"><img src="works/kling-award.jpg" alt="可灵灵感新锐奖"><span class="wb-shot-cap">可灵 AI NextGen · 灵感新锐奖（官方入选展示）</span></a>
+      </div>
+    </div>
 
     <div class="comp-group">
       <div class="comp-group-title">
         <span class="comp-group-badge nat">国家级</span>
       </div>
       <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">中国好创意（第二十届）暨全国数字艺术设计大赛大学生组 · AI 短剧《大约一万趟》</span><span class="rank">全国三等奖</span><span class="date">2026/09</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">网易有道 AIGC 视频创想大赛 · AI 短剧《大约一万趟》</span><span class="rank">全国三等奖</span><span class="date">2026</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">首尔国际 AI 电影节（Seoul Int'l AI Film Festival） · AI 短剧《大约一万趟》</span><span class="rank">入围</span><span class="date">2026</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">可灵 AI NextGen 高校 AIGC 创作大赛 · AI 短剧《大约一万趟》</span><span class="rank">灵感新锐奖</span><span class="date">2026</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">爱奇艺音乐创作大赛第三期 · 歌曲《挑着光》</span><span class="rank">二等奖</span><span class="date">2026</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">大学生 AI 艺术季 AI 歌曲创作单元 · 歌曲《挑着光》</span><span class="rank">入围</span><span class="date">2026</span>
+        </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">全国第七届大学生艺术节（展演）</span><span class="rank">国家级一等奖（排名 1/44）</span><span class="date">2024/06</span>
         </div>
@@ -832,6 +881,17 @@
         </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">第十四届"正大杯"全国大学生市场调查与分析大赛（本科组）</span><span class="rank">国家级三等奖</span><span class="date">2024/06</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="comp-group">
+      <div class="comp-group-title">
+        <span class="comp-group-badge prov">市级</span>
+      </div>
+      <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">"中华魂"主题教育读书征文比赛</span><span class="rank">市级一等奖</span><span class="date">2025</span>
         </div>
       </div>
     </div>
@@ -864,6 +924,18 @@
         <span class="comp-group-badge sch">校级</span>
       </div>
       <div class="comp-group-items">
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">"中华魂"主题教育读书征文比赛</span><span class="rank">校级二等奖</span><span class="date">2025</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">重庆大学"红岩杯"朗诵比赛</span><span class="rank">校级三等奖</span><span class="date">2025</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">重庆大学"挑战杯"竞赛</span><span class="rank">入围校级复赛</span><span class="date">2025</span>
+        </div>
+        <div class="comp-row">
+          <span class="bul">·</span><span class="name">重庆大学大学生职业规划大赛</span><span class="rank">院级三等奖</span><span class="date">2025</span>
+        </div>
         <div class="comp-row">
           <span class="bul">·</span><span class="name">第十六届大学生计算机设计大赛</span><span class="rank">校级二等奖</span><span class="date">2023/06</span>
         </div>
@@ -908,6 +980,16 @@
         <span class="practice-date">2025.09 — 至今</span>
       </div>
       <div class="practice-row">
+        <span class="practice-role">学业助理</span>
+        <span class="practice-org">重庆大学 · 高研院</span>
+        <span class="practice-date">2025.09 — 至今</span>
+      </div>
+      <div class="practice-row">
+        <span class="practice-role">课程助教（文明经典 · 文化研究）</span>
+        <span class="practice-org">重庆大学</span>
+        <span class="practice-date">2025.09 — 至今</span>
+      </div>
+      <div class="practice-row">
         <span class="practice-role">团支书</span>
         <span class="practice-org">杭州师范大学 · 人文学院中文214班</span>
         <span class="practice-date">2021.09 — 2025.06</span>
@@ -946,7 +1028,8 @@
         <div class="award-list">
           <div class="award-row"><span class="award-year">2025—2026</span><span class="award-name">重庆大学学业一等奖学金</span></div>
           <div class="award-row"><span class="award-year">2025—2026</span><span class="award-name">重庆大学优秀学生干部 · 三好学生</span></div>
-          <div class="award-row"><span class="award-year">2025—2026</span><span class="award-name">重庆市征文比赛一等奖</span></div>
+          <div class="award-row"><span class="award-year">2025—2026</span><span class="award-name">重庆大学优秀共青团干部</span></div>
+          <div class="award-row"><span class="award-year">2025</span><span class="award-name">"中华魂"主题教育读书征文比赛 市级一等奖</span></div>
         </div>
       </div>
       <div class="award-block">
