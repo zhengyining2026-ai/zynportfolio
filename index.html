@@ -407,11 +407,7 @@
 
     /* 项目卡片堆叠（卡片夹效果） */
     .rp-project-block{position:relative}
-    .rp-project-block::before,.rp-project-block::after{content:'';position:absolute;left:16px;right:16px;top:-10px;height:60px;border:1px solid var(--border);border-radius:var(--radius);background:rgba(13,17,25,0.55);z-index:-1;transition:var(--transition)}
-    .rp-project-block::before{transform:rotate(-0.7deg)}
-    .rp-project-block::after{top:-5px;transform:rotate(0.5deg)}
-    .rp-project-block:hover::before{transform:rotate(-1.1deg) translateY(-3px)}
-    .rp-project-block:hover::after{transform:rotate(0.9deg) translateY(-2px)}
+    .rp-project-block{position:relative}
 
     /* Welcome 照片画廊（无缝滚动） */
     /* Hero 个人照片卡（右侧 + 半圆装饰） */
@@ -622,11 +618,11 @@
         </div>
         <div class="exp-body">
           <div class="exp-body-inner">
-            <h4>项目一 · AI 新媒体与广告运营工作台</h4>
+            <h4>项目一 · AI 新媒体与广告运营工作台（基于 GPT）</h4>
             <ul>
-              <li>围绕海内外互联网金融竞品及传播渠道，搭建"竞品监测—内容生产—广告投放—数据复盘"闭环的 AI 运营工作台</li>
-              <li>为工作台搭建内部知识库，收录美团等六大平台的审核规则、获客机制与运营策略文档，采用混合检索与引用追踪机制</li>
-              <li>支持合规、多样化的 AI 图文及视频素材生产与迭代，通过工作台实现一站式运营及投放复盘，持续跟踪曝光、点击、转化等核心指标，月度客户来源贡献率约 11%</li>
+              <li><b>AI 工作流设计：</b>围绕海内外互联网金融竞品及传播渠道，搭建"竞品监测—内容生产—广告投放—数据复盘"闭环的 AI 运营工作台</li>
+              <li><b>知识库建设：</b>为工作台搭建企业内部知识库，收录美团等六大平台的审核规则、获客机制与运营策略文档，构建"文档管理 + 向量检索 + 关键词检索 + 引用追踪"结构：将 Markdown、TXT、DOCX 等资料解析并按标题、章节与内容切分为知识片段，经真实或 Mock Embedding 转为向量存入 PostgreSQL/pgvector；查询时同时执行语义检索与关键词匹配，经 RRF 融合排序返回最相关资料供 AI 生成引用，并记录文档版本、章节与引用用途，实现知识来源可追溯</li>
+              <li><b>广告投放运营与获客效能：</b>支持合规、多样化的 AI 图文及视频素材生产与迭代，通过工作台实现一站式运营与投放复盘，持续跟踪曝光、点击、转化等核心指标，月度客户来源贡献率约 11%，提升广告获客效能</li>
             </ul>
             <h4>项目二 · 企业信息系统智能 Agent</h4>
             <ul>
@@ -757,18 +753,18 @@
     <p class="section-label">Projects</p>
     <h2 class="section-title">项目经历</h2>
     <p class="section-desc">用镜头讲好故事，用文字做深研究，用科技赋能生活——深耕学术也关心世界。</p>
-    <h3 class="proj-subtitle-sm">产品demo作品</h3>
+    <h3 class="proj-subtitle-sm">产品作品</h3>
     <!-- ====== 全媒体内容运营工作台 ====== -->
     <div class="rp-project-block rp-featured">
       <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:600;text-align:center;margin-bottom:0.5rem">Vibe Coding <span class="rp-badge">重点推荐</span></p>
-      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">越迁科技 · AI 新媒体与广告运营工作台</h3>
+      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">AI 新媒体与广告运营工作台</h3>
 
       <h3 class="rp-section-header">设计初衷</h3>
       <div class="rp-intro">
         <h4>锚定市场需求</h4>
         <p>在汽车金融与车主服务的多平台内容运营中，我观察到四个反复出现的真实困境：选题依赖个人经验拍脑袋、月度排期与数据复盘完全脱节、内容质量只能靠人工逐篇把关、金融类内容存在违规表述风险。多数团队仍用表格加群聊管理，流程断点多，运营经验也无法沉淀。</p>
         <h4>策划功能设计</h4>
-        <p>基于这些痛点，我用 CodeBuddy 搭建了这套覆盖<em>排期—选题—生产—审核—复盘</em>全流程的内部工作台，把运营方法沉淀为系统规则：让排期可规划、选题有依据、生产有标准、审核有闸门、复盘能反哺。</p>
+        <p>基于这些痛点，我基于 GPT 大模型能力搭建了这套覆盖<em>排期—选题—生产—审核—复盘</em>全流程的内部工作台，把运营方法沉淀为系统规则：让排期可规划、选题有依据、生产有标准、审核有闸门、复盘能反哺。</p>
         <h4>厘清系统链路</h4>
         <p>形成一条可闭环的运营流水线：</p>
         <p style="margin-top:0.3rem">排期生成 → 选题策划 → 内容生产（大纲/正文/校正/多媒体）→ 终稿审核 → 数据复盘 → 结论反哺下月排期。</p>
