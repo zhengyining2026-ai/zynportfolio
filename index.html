@@ -271,8 +271,8 @@
     .award-name{color:var(--text)}
 
     /* ========== Skills ========== */
-    .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.25rem}
-    .skill-card{padding:1.5rem;background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius);transition:var(--transition)}
+    .skills-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem}
+    .skill-card{flex:0 1 310px;padding:1.5rem;background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius);transition:var(--transition)}
     .skill-card:hover{background:var(--bg-card-hover);border-color:var(--border-hover)}
     .skill-card h4{font-size:0.9rem;font-weight:700;color:#fff;margin-bottom:0.5rem}
     .skill-card p{font-size:0.82rem;color:var(--text-secondary);line-height:1.6}
