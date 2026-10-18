@@ -418,6 +418,33 @@
       70%{transform:translate3d(2%,-1.2%,0) scale(1.04)}
       100%{transform:translate3d(-1%,2%,0) scale(1.08)}}
 
+    /* 流星层 */
+    .meteor-layer{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+    .meteor{
+      position:absolute;top:-10%;width:2px;height:2px;border-radius:50%;
+      background:#fff;box-shadow:0 0 10px 2px rgba(255,255,255,0.9),0 0 22px 6px rgba(122,171,248,0.35);
+      opacity:0;transform:rotate(215deg);animation:meteorFall linear infinite}
+    .meteor::after{
+      content:'';position:absolute;left:0;top:50%;width:var(--tail,140px);height:1.5px;
+      transform:translateY(-50%) rotate(180deg);
+      background:linear-gradient(to right,rgba(255,255,255,0.85),rgba(255,255,255,0))}
+    @keyframes meteorFall{
+      0%{opacity:0;transform:rotate(215deg) translate(0,0)}
+      2%{opacity:1}
+      14%{opacity:0}
+      100%{opacity:0;transform:rotate(215deg) translate(700px,700px)}
+    }
+    .m1{left:4%;animation-duration:9s;animation-delay:2s;--tail:100px}
+    .m2{left:95%;animation-duration:13s;animation-delay:6s;--tail:120px}
+    .m3{left:8%;animation-duration:11s;animation-delay:10s;--tail:80px}
+    .m4{left:91%;animation-duration:16s;animation-delay:1s;--tail:110px}
+    .m5{left:2%;animation-duration:14s;animation-delay:13s;--tail:90px}
+    .m6{left:97%;animation-duration:12s;animation-delay:18s;--tail:100px}
+    .m7{left:6%;animation-duration:17s;animation-delay:4s;--tail:85px}
+    .m8{left:93%;animation-duration:15s;animation-delay:22s;--tail:95px}
+    @media(prefers-reduced-motion:reduce){.meteor{display:none}}
+    @media(max-width:1240px){.meteor-layer{display:none}}
+
     /* 滚动淡入 */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .85s ease,transform .85s ease}
     .reveal.visible{opacity:1;transform:none}
@@ -540,6 +567,13 @@
   </style>
 </head>
 <body>
+
+  <!-- 流星层（固定在背景，卡片区域会自动遮挡） -->
+  <div class="meteor-layer" aria-hidden="true">
+    <span class="meteor m1"></span><span class="meteor m2"></span><span class="meteor m3"></span>
+    <span class="meteor m4"></span><span class="meteor m5"></span><span class="meteor m6"></span>
+    <span class="meteor m7"></span><span class="meteor m8"></span>
+  </div>
 
   <!-- ====== Navbar ====== -->
   <nav class="nav">
