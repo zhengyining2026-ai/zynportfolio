@@ -99,7 +99,8 @@
     /* Hero 左对齐排版 */
     .hero-eyebrow,.hero h1,.hero-subtitle,.hero-lines,.hero-persona,.hero-intent{text-align:left;margin-left:0;margin-right:0}
     .hero-eyebrow{font-size:0.92rem;letter-spacing:4px}
-    .hero h1{font-size:4.1rem}
+    .hero h1{font-size:4.1rem;animation:heroTitleIn 1.2s ease 0.15s both}
+    @keyframes heroTitleIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
     .hero h1 span{background:linear-gradient(90deg,#8db8ff,#4d8af0);-webkit-background-clip:text;background-clip:text;color:transparent}
     .hero-subtitle{font-size:1.05rem;margin-top:1rem;max-width:600px}
     .hero-lines{margin-top:1.2rem;align-items:flex-start;gap:0.55rem}
@@ -463,6 +464,17 @@
     .contact-section::after{animation-delay:2s}
     @keyframes twinkle{0%,100%{opacity:0.2}50%{opacity:0.65}}
 
+    /* 作品卡内获奖展示 */
+    .proj-awards{margin-top:1.4rem;border-top:1px solid var(--border);padding-top:1.4rem}
+    .pa-poster{border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+    .pa-poster img{width:100%;display:block}
+    .pa-certs{display:grid;grid-template-columns:repeat(2,minmax(0,180px));justify-content:center;gap:1.1rem;margin-top:1.2rem}
+    .pa-cert{display:block;border-radius:10px;overflow:hidden;border:1px solid var(--border);transition:transform .35s ease,border-color .35s ease}
+    .pa-cert:hover{transform:translateY(-4px);border-color:var(--border-hover)}
+    .pa-cert img{width:100%;height:135px;object-fit:cover;object-position:top center;display:block}
+    .pa-cert span{display:block;font-size:0.68rem;color:var(--text-secondary);padding:0.55rem 0.5rem;text-align:center;line-height:1.5}
+    .proj-awards .work-link{margin:1.1rem auto 0;display:table}
+
     /* 板块编号（01 / 02 ...） */
     body{counter-reset:sec}
     .section{counter-increment:sec}
@@ -474,10 +486,10 @@
     .exp-list .exp-card:nth-child(4),.soft-grid .soft-card:nth-child(4),.skills-grid .skill-card:nth-child(4){transition-delay:.3s}
 
     /* 学习坐标双卡 */
-    .edu-cards{display:grid;grid-template-columns:repeat(2,minmax(0,330px));justify-content:center;gap:1.25rem;margin-bottom:2.5rem}
-    .edu-photo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
-    .edu-photo-card:hover{transform:translateY(-4px);border-color:var(--border-hover);box-shadow:0 14px 34px rgba(0,0,0,0.35)}
-    .ep-img{position:relative;height:150px;display:flex;align-items:center;justify-content:center;font-size:2.2rem}
+    .edu-cards{display:grid;grid-template-columns:repeat(2,minmax(0,430px));justify-content:center;gap:1.5rem;margin-bottom:2.5rem}
+    .edu-photo-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease}
+    .edu-photo-card:hover{transform:translateY(-6px) scale(1.02);border-color:var(--border-hover);box-shadow:0 18px 44px rgba(77,138,240,0.18)}
+    .ep-img{position:relative;height:200px;display:flex;align-items:center;justify-content:center;font-size:2.2rem}
     .ep-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
     .ep-cqu{background:linear-gradient(135deg,rgba(77,138,240,0.25),rgba(140,100,255,0.15))}
     .ep-hznu{background:linear-gradient(135deg,rgba(64,208,190,0.22),rgba(77,138,240,0.12))}
@@ -487,8 +499,8 @@
     .ep-tag{font-size:0.75rem;color:var(--text-secondary)}
     .ep-tag em{color:var(--accent);font-style:normal;font-weight:600}
     .ep-badge{position:absolute;right:12px;bottom:12px;width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;box-shadow:0 4px 12px rgba(0,0,0,0.4);z-index:3}
-    .ep-detail{margin-top:0.65rem;border-top:1px solid var(--border);padding-top:0.65rem}
-    .ep-detail p{font-size:0.75rem;color:var(--text-secondary);line-height:1.75;margin-bottom:0.35rem}
+    .ep-detail{margin-top:0.85rem;border-top:1px solid var(--border);padding-top:0.85rem}
+    .ep-detail p{font-size:0.78rem;color:var(--text-secondary);line-height:1.8;margin-bottom:0.45rem}
     @media(max-width:760px){.edu-cards{grid-template-columns:1fr}}
 
     /* 微信二维码卡（悬停弹出二维码） */
@@ -567,8 +579,9 @@
           <p class="ep-name">重庆大学</p>
           <p class="ep-tag">硕士研究生 · 中国语言文学 <em>· 推免</em></p>
           <div class="ep-detail">
-            <p>学年均绩 93 分，年级排名第 1；连续两学年获校一等奖学金，获校优秀学生干部、三好学生等综合荣誉</p>
-            <p>研究方向：文艺学 —— 新媒介文艺、数字人文与青年亚文化（微短剧平台、陪伴式 AIGC 情感与伦理）</p>
+            <p>学年均绩 93 分 · 年级排名第 1</p>
+            <p>连续两学年校一等奖学金 · 校优秀学生干部</p>
+            <p>研究方向：新媒介文艺 · 数字人文 · 青年亚文化</p>
           </div>
         </div>
       </div>
@@ -579,8 +592,9 @@
           <p class="ep-name">杭州师范大学</p>
           <p class="ep-tag">本科 · 中国语言文学 <em>· 专业第一（排名 1/41）</em></p>
           <div class="ep-detail">
-            <p>GPA 4.16/5 · 专业年级前 2% · 获推荐免试研究生资格；连续三年获浙江省政府奖学金、校一等奖学金</p>
-            <p>获评浙江省优秀毕业生、校优秀学生干部、优秀共青团干部、亚运会服务保障优秀志愿者</p>
+            <p>GPA 4.16/5 · 专业年级前 2% · 获推免资格</p>
+            <p>连续三年浙江省政府奖学金 · 校一等奖学金</p>
+            <p>浙江省优秀毕业生 · 亚运会优秀志愿者</p>
           </div>
         </div>
       </div>
@@ -949,6 +963,14 @@
         <p><em style="color:var(--accent-light);font-weight:600;">项目背景：</em>母亲节公益主题 AI 短剧，以重庆女性挑山工为真实创作背景，聚焦该群体在历史与生活中承担的责任与价值，通过 AIGC 技术打造公益短篇，传递人文关怀。</p>
         <p><em style="color:var(--accent-light);font-weight:600;">我的职责：</em>作为核心团队成员，全程参与项目开发制作；独立负责情节剧本指导与设计、AI 原创歌词及歌曲创作，把控故事叙事与音乐内容方向。</p>
         <p><em style="color:var(--accent-light);font-weight:600;">项目成果：</em>作品全网传播效果优异，单平台播放量 13.8W+；凭借创意与公益价值，荣获网易有道 AIGC 视频创想大赛三等奖。</p>
+        <div class="proj-awards">
+          <div class="pa-poster"><img src="works/dz1w-poster.jpg" alt="《大约一万趟》海报"></div>
+          <div class="pa-certs">
+            <a class="pa-cert" href="works/ccs-cert.jpg" target="_blank"><img src="works/ccs-cert.jpg" alt="中国好创意获奖证书"><span>中国好创意暨全国数字艺术设计大赛 · 全国三等奖证书</span></a>
+            <a class="pa-cert" href="works/kling-award.jpg" target="_blank"><img src="works/kling-award.jpg" alt="可灵灵感新锐奖"><span>可灵 AI NextGen 高校 AIGC 创作大赛 · 灵感新锐奖</span></a>
+          </div>
+          <a class="work-link" href="https://klingai.com/app/activity-zone/brand-activity?id=862459762066743329" target="_blank" rel="noopener">🔗 查看可灵 AI 获奖公示 <span>↗</span></a>
+        </div>
       </div>
       <div class="project-card">
         <h4>余杭竹家民宿宣传视频制作</h4>
@@ -1007,28 +1029,39 @@
     </div>
   </section>
 
+  <!-- ====== Soft Skills & AI ====== -->
+  <section class="section">
+    <p class="section-label">Soft Skills & AI</p>
+    <h2 class="section-title">产品素质与 AI 学习力</h2>
+    <p class="section-desc">工具可以习得，素质决定上限——在跨学科迁移中持续进化。</p>
+    <div class="soft-grid">
+      <div class="soft-card"><span class="soft-en">Proactivity</span><h4>主动性</h4></div>
+      <div class="soft-card"><span class="soft-en">Execution</span><h4>执行力</h4></div>
+      <div class="soft-card"><span class="soft-en">Judgment</span><h4>判断力</h4></div>
+      <div class="soft-card"><span class="soft-en">Aesthetics</span><h4>审美力</h4></div>
+      <div class="soft-card"><span class="soft-en">Influence</span><h4>影响力</h4></div>
+      <div class="soft-card"><span class="soft-en">Storytelling</span><h4>叙事力</h4></div>
+    </div>
+    <div class="ai-learn">
+      <h3>AI 学习能力 · Learning how to learn</h3>
+      <p class="ai-desc">AI 时代，我以此刻的知识储备为起点，更看重持续学习与快速迭代的能力。</p>
+      <div class="ai-chips">
+        <span class="ai-chip">长期深度使用 Claude / GPT</span>
+        <span class="ai-chip">Vibe Coding 全栈开发</span>
+        <span class="ai-chip">Prompt 工程</span>
+        <span class="ai-chip">Skill 编排</span>
+        <span class="ai-chip">Agent 工作流设计</span>
+        <span class="ai-chip">双模型对比评测</span>
+        <span class="ai-chip">持续跟踪 AI 产品动态</span>
+      </div>
+    </div>
+  </section>
+
   <!-- ====== Competition ====== -->
   <section class="section" id="competition">
     <p class="section-label">Competition</p>
     <h2 class="section-title">竞赛荣誉</h2>
     <p class="section-desc">从诗词讲解到市场调研，从计算机设计到 AI 创作——文理兼修、跨界突围。</p>
-
-    <!-- AI 作品重点展示 -->
-    <div class="work-feature">
-      <div class="work-top">
-        <div class="work-poster"><img src="works/dz1w-poster.jpg" alt="《大约一万趟》海报"></div>
-        <div class="work-info">
-          <h3>AI 短剧《大约一万趟》 <span class="work-en">Roughly Ten Thousand Journeys</span></h3>
-          <p class="work-role">担任编剧 · 主题曲 MV 作词 / 作曲</p>
-          <p class="work-desc">作品获中国好创意暨全国数字艺术设计大赛全国三等奖、网易有道 AIGC 视频创想大赛全国三等奖，入围首尔国际 AI 电影节，获可灵 AI NextGen 高校 AIGC 创作大赛灵感新锐奖，单平台播放量 13.8W+。</p>
-          <a class="work-link" href="https://klingai.com/app/activity-zone/brand-activity?id=862459762066743329" target="_blank" rel="noopener">🔗 查看可灵 AI 获奖公示 <span>↗</span></a>
-        </div>
-      </div>
-      <div class="work-certs">
-        <a class="wb-shot" href="works/ccs-cert.jpg" target="_blank"><img src="works/ccs-cert.jpg" alt="中国好创意获奖证书"><span class="wb-shot-cap">中国好创意暨全国数字艺术设计大赛 · 全国三等奖证书</span></a>
-        <a class="wb-shot" href="works/kling-award.jpg" target="_blank"><img src="works/kling-award.jpg" alt="可灵灵感新锐奖"><span class="wb-shot-cap">可灵 AI NextGen · 灵感新锐奖（官方入选展示）</span></a>
-      </div>
-    </div>
 
     <div class="comp-group">
       <div class="comp-group-title">
@@ -1236,33 +1269,6 @@
     </div>
   </section>
 
-  <!-- ====== Soft Skills & AI ====== -->
-  <section class="section">
-    <p class="section-label">Soft Skills & AI</p>
-    <h2 class="section-title">产品软素质与 AI 学习力</h2>
-    <p class="section-desc">工具可以习得，素质决定上限——在跨学科迁移中持续进化。</p>
-    <div class="soft-grid">
-      <div class="soft-card"><span class="soft-en">Proactivity</span><h4>主动性</h4></div>
-      <div class="soft-card"><span class="soft-en">Execution</span><h4>执行力</h4></div>
-      <div class="soft-card"><span class="soft-en">Judgment</span><h4>判断力</h4></div>
-      <div class="soft-card"><span class="soft-en">Aesthetics</span><h4>审美力</h4></div>
-      <div class="soft-card"><span class="soft-en">Influence</span><h4>影响力</h4></div>
-      <div class="soft-card"><span class="soft-en">Storytelling</span><h4>叙事力</h4></div>
-    </div>
-    <div class="ai-learn">
-      <h3>AI 学习能力 · Learning how to learn</h3>
-      <p class="ai-desc">AI 时代，我以此刻的知识储备为起点，更看重持续学习与快速迭代的能力。</p>
-      <div class="ai-chips">
-        <span class="ai-chip">长期深度使用 Claude / GPT</span>
-        <span class="ai-chip">Vibe Coding 全栈开发</span>
-        <span class="ai-chip">Prompt 工程</span>
-        <span class="ai-chip">Skill 编排</span>
-        <span class="ai-chip">Agent 工作流设计</span>
-        <span class="ai-chip">双模型对比评测</span>
-        <span class="ai-chip">持续跟踪 AI 产品动态</span>
-      </div>
-    </div>
-  </section>
 
   <!-- ====== Skills ====== -->
   <section class="section">
