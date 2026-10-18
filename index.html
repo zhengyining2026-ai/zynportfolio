@@ -1441,19 +1441,23 @@
     }));
     let wheelLock = false;
     expDeck.addEventListener('wheel', e => {
-      if(wheelLock || Math.abs(e.deltaY) < 40 || document.querySelector('.exp-archive.open')) return;
+      if(wheelLock || Math.abs(e.deltaY) < 40) return;
       wheelLock = true; setTimeout(() => wheelLock = false, 900);
       e.deltaY > 0 ? nextCard() : prevCard();
     }, { passive: true });
     let touchY = null;
     expDeck.addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
     expDeck.addEventListener('touchend', e => {
-      if(touchY === null || document.querySelector('.exp-archive.open')) return;
+      if(touchY === null) return;
       const dy = touchY - e.changedTouches[0].clientY;
       if(Math.abs(dy) > 60) dy > 0 ? nextCard() : prevCard();
       touchY = null;
     }, { passive: true });
     layoutDeck();
+
+    // 档案区离开视口时自动收起展开内容
+    const expIO = new IntersectionObserver(es => es.forEach(en => { if(!en.isIntersecting) collapseAll(); }), { threshold: 0.15 });
+    expIO.observe(expDeck);
     const navLinks=document.querySelectorAll('.nav-links a');
     const sections=[];
     navLinks.forEach(link=>{const id=link.getAttribute('href').substring(1);const el=document.getElementById(id);if(el)sections.push({id,el})});
