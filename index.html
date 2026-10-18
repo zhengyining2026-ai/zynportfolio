@@ -169,6 +169,30 @@
     .exp-card.open .exp-toggle .arrow{transform:rotate(180deg)}
     .exp-body{max-height:0;overflow:hidden;transition:max-height 0.5s ease,padding 0.3s ease}
     .exp-card.open .exp-body{max-height:1400px}
+    /* 实习档案轮播 */
+    .exp-gallery{display:flex;gap:1.5rem;align-items:flex-start;margin-top:1.25rem}
+    .exp-dial{flex:0 0 130px;position:sticky;top:100px}
+    .exp-dial svg{width:100%;display:block}
+    .dial-core{fill:var(--bg-card);stroke:var(--border);stroke-width:1}
+    .dial-seg{fill:none;stroke:var(--border);stroke-width:7;stroke-linecap:round;cursor:pointer;transition:stroke .3s}
+    .dial-seg:hover{stroke:var(--accent-light)}
+    .dial-seg.active{stroke:var(--accent)}
+    .dial-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:0.62rem;color:var(--text-secondary);text-align:center;font-weight:600;letter-spacing:1px}
+    .dial-label span{display:block;font-size:1.05rem;color:#fff;letter-spacing:0}
+    .exp-stage{flex:1;min-width:0;position:relative}
+    .exp-archive{display:none;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+    .exp-archive.active{display:block;animation:archIn .55s ease}
+    .exp-archive.leaving{display:block;animation:archOut .35s ease forwards}
+    @keyframes archIn{from{opacity:0;transform:translateY(30px) scale(0.98)}to{opacity:1;transform:none}}
+    @keyframes archOut{to{opacity:0;transform:translateY(-26px) scale(0.98)}}
+    .exp-visual{border-bottom:1px solid var(--border);background:#0d1119}
+    .exp-visual img{width:100%;height:300px;object-fit:cover;object-position:top center;display:block;transition:transform .5s ease}
+    .exp-visual:hover img{transform:scale(1.02)}
+    .exp-archive .exp-body{max-height:0;overflow:hidden;transition:max-height .5s ease}
+    .exp-archive.open .exp-body{max-height:1600px}
+    .exp-archive.open .exp-toggle{background:var(--accent);border-color:var(--accent);color:#fff}
+    .exp-archive.open .exp-toggle .arrow{transform:rotate(180deg)}
+    @media(max-width:760px){.exp-gallery{flex-direction:column;align-items:center}.exp-dial{position:static;flex:none;width:96px}.exp-visual img{height:200px}}
     .exp-body-inner{padding:0 1.75rem 1.75rem;border-top:1px solid var(--border)}
     .exp-body-inner h4{font-size:0.85rem;color:var(--accent-light);font-weight:600;margin:1.25rem 0 0.5rem}
     .exp-body-inner ul{list-style:none;padding:0}
@@ -571,10 +595,23 @@
     <p class="section-label">Experience</p>
     <h2 class="section-title">实习经历</h2>
     <p class="section-desc">在多元角色中锤炼产品与运营思维。</p>
-    <div class="exp-list">
+    <div class="exp-gallery">
+      <!-- 四段导航盘 -->
+      <div class="exp-dial">
+        <svg viewBox="0 0 100 100">
+          <circle cx="50" cy="50" r="26" class="dial-core"></circle>
+          <path class="dial-seg active" data-idx="0" d="M80.6,24.3 A40,40 0 0 1 80.6,75.7"></path>
+          <path class="dial-seg" data-idx="1" d="M75.7,80.6 A40,40 0 0 1 24.3,80.6"></path>
+          <path class="dial-seg" data-idx="2" d="M19.4,75.7 A40,40 0 0 1 19.4,24.3"></path>
+          <path class="dial-seg" data-idx="3" d="M24.3,19.4 A40,40 0 0 1 80.6,19.4"></path>
+        </svg>
+        <div class="dial-label"><span id="dialNum">01</span>/ 04</div>
+      </div>
+      <div class="exp-stage" id="expStage">
       <!-- 越迁科技 -->
-      <div class="exp-card">
-        <div class="exp-header" onclick="toggleExp(this)">
+      <div class="exp-archive active" data-idx="0">
+        <div class="exp-visual"><img src="works/exp-1.png" alt="越迁科技 · 企业 AI 助理（钉钉端）"></div>
+        <div class="exp-header" onclick="toggleArchive(this)">
           <div class="exp-header-left">
             <div class="exp-company">杭州越迁科技有限公司</div>
             <div class="exp-role">AI 产品运营实习生</div>
@@ -609,8 +646,9 @@
         </div>
       </div>
       <!-- 仟守文化 -->
-      <div class="exp-card">
-        <div class="exp-header" onclick="toggleExp(this)">
+      <div class="exp-archive" data-idx="1">
+        <div class="exp-visual"><img src="works/exp-2.png" alt="仟守文化 · 运营数据看板"></div>
+        <div class="exp-header" onclick="toggleArchive(this)">
           <div class="exp-header-left">
             <div class="exp-company">杭州仟守文化创意有限公司</div>
             <div class="exp-role">新媒体运营实习生</div>
@@ -643,8 +681,9 @@
         </div>
       </div>
       <!-- 字节跳动 -->
-      <div class="exp-card">
-        <div class="exp-header" onclick="toggleExp(this)">
+      <div class="exp-archive" data-idx="2">
+        <div class="exp-visual"><img src="works/exp-3.jpg" alt="字节跳动 · 抖音商城年货节"></div>
+        <div class="exp-header" onclick="toggleArchive(this)">
           <div class="exp-header-left">
             <div class="exp-company">字节跳动 · TikTok Shop</div>
             <div class="exp-role">人力资源实习生</div>
@@ -675,8 +714,9 @@
         </div>
       </div>
       <!-- 中科创新 -->
-      <div class="exp-card">
-        <div class="exp-header" onclick="toggleExp(this)">
+      <div class="exp-archive" data-idx="3">
+        <div class="exp-visual"><img src="works/exp-4.png" alt="中科创新 · 课后服务签到产品"></div>
+        <div class="exp-header" onclick="toggleArchive(this)">
           <div class="exp-header-left">
             <div class="exp-company">中科创新未来教育科技有限责任公司</div>
             <div class="exp-role">产品运营</div>
@@ -706,6 +746,7 @@
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -1334,6 +1375,38 @@
     const revealIO = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } }), { threshold: 0.08 });
     document.querySelectorAll('.section, .rp-project-block, .exp-card, .skill-card, .soft-card, .work-feature, .ai-learn').forEach(el => { el.classList.add('reveal'); revealIO.observe(el); });
     function toggleExp(header){header.parentElement.classList.toggle('open')}
+    function toggleArchive(header){header.parentElement.classList.toggle('open')}
+
+    // 实习档案轮播：导航盘 + 滚轮 + 触摸滑动
+    let expIdx = 0;
+    const archives = document.querySelectorAll('.exp-archive');
+    const dialSegs = document.querySelectorAll('.dial-seg');
+    const dialNum = document.getElementById('dialNum');
+    function showExp(i){
+      if(i === expIdx || i < 0 || i >= archives.length) return;
+      const old = archives[expIdx];
+      old.classList.remove('active'); old.classList.add('leaving');
+      setTimeout(() => old.classList.remove('leaving'), 380);
+      expIdx = i;
+      archives[expIdx].classList.add('active');
+      dialSegs.forEach((s,k) => s.classList.toggle('active', k === expIdx));
+      dialNum.textContent = String(expIdx + 1).padStart(2,'0');
+    }
+    dialSegs.forEach(s => s.addEventListener('click', () => showExp(+s.dataset.idx)));
+    let wheelLock = false;
+    document.getElementById('expStage').addEventListener('wheel', e => {
+      if(wheelLock || document.querySelector('.exp-archive.open')) return;
+      wheelLock = true; setTimeout(() => wheelLock = false, 700);
+      showExp(expIdx + (e.deltaY > 0 ? 1 : -1));
+    }, { passive: true });
+    let touchY = null;
+    document.getElementById('expStage').addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
+    document.getElementById('expStage').addEventListener('touchend', e => {
+      if(touchY === null || document.querySelector('.exp-archive.open')) return;
+      const dy = touchY - e.changedTouches[0].clientY;
+      if(Math.abs(dy) > 60) showExp(expIdx + (dy > 0 ? 1 : -1));
+      touchY = null;
+    }, { passive: true });
     const navLinks=document.querySelectorAll('.nav-links a');
     const sections=[];
     navLinks.forEach(link=>{const id=link.getAttribute('href').substring(1);const el=document.getElementById(id);if(el)sections.push({id,el})});
