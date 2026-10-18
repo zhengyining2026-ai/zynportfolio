@@ -268,6 +268,15 @@
       margin-bottom:2.5rem;
     }
 
+    /* ========== 运营工作台截图 ========== */
+    .wb-shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:0.5rem}
+    .wb-shot{display:block;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:var(--bg-card);text-decoration:none;transition:var(--transition)}
+    .wb-shot:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 10px 24px rgba(77,138,240,0.18)}
+    .wb-shot img{width:100%;height:auto;display:block;border-bottom:1px solid var(--border)}
+    .wb-shot-cap{display:block;font-size:0.72rem;color:var(--text-secondary);padding:0.55rem 0.75rem;text-align:center;transition:var(--transition)}
+    .wb-shot:hover .wb-shot-cap{color:var(--accent-light)}
+    @media(max-width:760px){.wb-shots{grid-template-columns:repeat(2,1fr)}}
+
     /* ========== Self Eval ========== */
     .eval-text{max-width:680px;margin:0 auto;padding:2rem 2rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius)}
     .eval-text p{font-size:0.9rem;color:var(--text-secondary);line-height:2.1;margin-bottom:0.6rem;text-align:left}
@@ -600,6 +609,101 @@
       <div class="rp-reflection">
         <p>目前系统最大短板集中在 AI 底层分析能力不足：JD 拆解颗粒度较粗糙，对岗位核心能力与技能权重的划分不够精准，关键词提取与用人偏好分析偏浅层；STAR 生成与经历融合时，AI 对行业业务逻辑、岗位专业术语的理解不足，输出话术通用性强、岗位针对性弱。</p>
         <p>后续将优化 AI 提示词体系，完善 JD 拆解的多维度权重，结合大厂真实招聘 JD 样本训练模型，强化岗位与个人经历的精准匹配度，打磨输出内容的针对性。</p>
+      </div>
+    </div>
+
+    <!-- ====== 全媒体内容运营工作台 ====== -->
+    <div class="rp-project-block">
+      <p style="font-size:0.7rem;text-transform:uppercase;letter-spacing:3px;color:var(--accent);font-weight:600;text-align:center;margin-bottom:0.5rem">Vibe Coding</p>
+      <h3 style="font-size:1.15rem;font-weight:700;color:#fff;text-align:center;margin-bottom:1.5rem">越迁科技 · 全媒体内容运营工作台</h3>
+
+      <h3 class="rp-section-header">设计初衷</h3>
+      <div class="rp-intro">
+        <h4>锚定市场需求</h4>
+        <p>在汽车金融与车主服务的多平台内容运营中，我观察到四个反复出现的真实困境：选题依赖个人经验拍脑袋、月度排期与数据复盘完全脱节、内容质量只能靠人工逐篇把关、金融类内容存在违规表述风险。多数团队仍用表格加群聊管理，流程断点多，运营经验也无法沉淀。</p>
+        <h4>策划功能设计</h4>
+        <p>基于这些痛点，我用 CodeBuddy 搭建了这套覆盖<em>排期—选题—生产—审核—复盘</em>全流程的内部工作台，把运营方法沉淀为系统规则：让排期可规划、选题有依据、生产有标准、审核有闸门、复盘能反哺。</p>
+        <h4>厘清系统链路</h4>
+        <p>形成一条可闭环的运营流水线：</p>
+        <p style="margin-top:0.3rem">排期生成 → 选题策划 → 内容生产（大纲/正文/校正/多媒体）→ 终稿审核 → 数据复盘 → 结论反哺下月排期。</p>
+      </div>
+
+      <h3 class="rp-section-header">系统界面</h3>
+      <div class="wb-shots">
+        <a class="wb-shot" href="shots/1-home.png" target="_blank"><img src="shots/1-home.png" alt="工作台总览" loading="lazy"><span class="wb-shot-cap">工作台总览</span></a>
+        <a class="wb-shot" href="shots/2-plan.png" target="_blank"><img src="shots/2-plan.png" alt="内容排期" loading="lazy"><span class="wb-shot-cap">内容排期</span></a>
+        <a class="wb-shot" href="shots/3-topic.png" target="_blank"><img src="shots/3-topic.png" alt="选题中心" loading="lazy"><span class="wb-shot-cap">选题中心</span></a>
+        <a class="wb-shot" href="shots/5-taskdetail.png" target="_blank"><img src="shots/5-taskdetail.png" alt="内容生产详情" loading="lazy"><span class="wb-shot-cap">内容生产详情</span></a>
+        <a class="wb-shot" href="shots/7-reviewdata.png" target="_blank"><img src="shots/7-reviewdata.png" alt="数据复盘" loading="lazy"><span class="wb-shot-cap">数据复盘</span></a>
+        <a class="wb-shot" href="shots/8-kb.png" target="_blank"><img src="shots/8-kb.png" alt="运营知识库" loading="lazy"><span class="wb-shot-cap">运营知识库</span></a>
+      </div>
+
+      <h3 class="rp-section-header">产品功能亮点</h3>
+      <div class="rp-grid">
+        <!-- Feature 1 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">01</span>
+          <h4>排期到复盘的全链路闭环</h4>
+          <p class="rp-grid-desc">不是单点工具，而是一条可循环的运营流水线</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>系统按"日历节点 / 时政热点 / 日常知识 / 用户问题"四类节点自动生成月度排期，选题、生产、审核、复盘全部挂载在同一条计划线上，杜绝流程断点。</p>
+              <h5>复盘结论反向驱动</h5>
+              <p>数据复盘产出的结论与建议可一键反馈为下月选题，让"上月数据"真正指导"下月内容"，形成闭环而不是一次性报表。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 2 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">02</span>
+          <h4>AI 辅助 + 人工把关的双层质控</h4>
+          <p class="rp-grid-desc">AI 提效但不放权，关键节点留给人工决策</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>AI 可生成选题、大纲、正文与配图脚本，但发布前必须经过两道人工可控闸门：</p>
+              <h5>AI 校正六类检查</h5>
+              <p>错别字病句、标题与正文一致性、政策来源与时间、金融合规表达、平台规则与敏感词、事实与素材逐项给出结论，存疑项强制转人工确认。</p>
+              <h5>评分闸门</h5>
+              <p>从内容质量、GEO 就绪度、获客准备度、合规四个维度评分，未达标不允许提交终稿审核，把"质量靠感觉"变成"质量有标准"。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 3 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">03</span>
+          <h4>知识库 RAG 与合规红线</h4>
+          <p class="rp-grid-desc">让内容有据可依，把合规风险挡在发布之前</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>企业信息、行业知识、合规红线、内容模板四类知识文档切片向量化，内容生产时按平台自动召回相关知识，并全程记录引用来源，保证内容可追溯。</p>
+              <h5>合规词前置拦截</h5>
+              <p>针对汽车金融场景内置"最高收益、保本保息、稳赚不赔"等违规表述清单，生成与审核环节自动校验，从源头降低金融内容合规风险。</p>
+            </div>
+          </div>
+        </div>
+        <!-- Feature 4 -->
+        <div class="rp-grid-item" onclick="this.classList.toggle('open')">
+          <span class="rp-grid-num">04</span>
+          <h4>六平台差异化适配</h4>
+          <p class="rp-grid-desc">一套流程，多套表达，避免"一稿多发"</p>
+          <span class="rp-grid-arrow">▾</span>
+          <div class="rp-grid-body">
+            <div class="rp-grid-body-inner">
+              <p>公众号、小红书、视频号、懂车帝、抖音、美团点评六个平台各自维护内容调性、固定栏目与违禁词，同一选题在不同平台生成符合各自语境的内容。</p>
+              <h5>统一的数据口径</h5>
+              <p>各平台后台数据导入后映射为统一标准字段，支持跨平台横向对比与趋势归因，避免"各平台各说各话"。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="rp-section-header">产品反思与优化</h3>
+      <div class="rp-reflection">
+        <p>当前版本仍有两处明显短板：一是 AI 生成内容存在同质化倾向，对提示词质量依赖较重，不同平台的差异化表达有时不够鲜明；二是知识库长文档的切片粒度较粗，向量检索在细分知识点上的召回精度还有提升空间。</p>
+        <p>后续计划引入更细粒度的分块策略与重排序机制提升检索精度，并沉淀各平台优质样本持续迭代提示词体系，同时补充 A/B 测试能力，让内容效果优化从"经验判断"走向"数据验证"。</p>
       </div>
     </div>
     <h3 class="proj-subtitle-sm">媒体运营类</h3>
